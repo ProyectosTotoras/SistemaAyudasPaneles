@@ -1,0 +1,1078 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="PagareAyudaPesos" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bcf9d35b-7285-4e87-9c74-b1529c6a7235">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="BBDD_SistemaMutual_PRD"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="168"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="825"/>
+	<parameter name="PnroAyuda" forPrompting="false" class="java.lang.Integer"/>
+	<parameter name="PnroSocio" forPrompting="false" class="java.lang.Integer"/>
+	<parameter name="Pnovacion" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PfechaDepositarFormateada" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PmontoEnPalabras" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PfechaHoyFormateada" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Pexento" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PmaximoAnio" forPrompting="false" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PmontoAyudaEnPalabras" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PdestinoAyuda" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PfechaVencimiento1Cuota" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PmontoSelladoPcial" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PcantidadCuotas" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnombreSocio" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PdomicilioSocio" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PlocalidadSocio" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnombreG1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnombreG2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PdomicilioG1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PdomicilioG2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PlocalidadG1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PlocalidadG2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Pefectivo" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Ptransferencia" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Pcheques" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Pbanco3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Pcheque3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Pcheque2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Pcheque1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Pbanco2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Pbanco1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnroCheque3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnroCheque2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnroCheque1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PmontoCuota" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PmontoSellado" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PfechaPago1Cuota" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnroSocioG1" forPrompting="false" class="java.lang.Integer"/>
+	<parameter name="PnroSocioG2" forPrompting="false" class="java.lang.Integer"/>
+	<parameter name="PfechaHoy" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PmontoAyuda" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PimporteEnPalzo" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PgastosAdmin" forPrompting="false" class="java.lang.String"/>
+	<parameter name="Ptotal1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PmontoSolicitado" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnombreG3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PlocalidadG3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PdomicilioG3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnroSocioG3" forPrompting="false" class="java.lang.Integer"/>
+	<query language="sql"><![CDATA[SELECT AP.NRO_AYUDA, AP.NUMERO_SOCIO, AP.CANTIDAD_CUOTAS, CAP.NUMERO_CUOTA, CONCAT('$ ', FORMAT(CAP.MONTO_CUOTA, 2, 'es_AR'), ' .-') AS MONTO_CUOTA, 
+       S.APELLIDO_NOMBRE, S.DOMICILIO, S.LOCALIDAD,
+      CONCAT('$ ', FORMAT(AP.MONTO_SELLADO / AP.CANTIDAD_CUOTAS, 2, 'es_AR')) AS TOTAL_PCIAL, 
+      IFNULL(SG1.APELLIDO_NOMBRE, '') AS NOMGARANTE1, IFNULL(SG1.DOMICILIO, '') AS DOMGARANTE1, IFNULL(SG1.LOCALIDAD, '') AS LOCAGARANTE1,
+      IFNULL(SG2.APELLIDO_NOMBRE, '') AS NOMGARANTE2, IFNULL(SG2.DOMICILIO, '') AS DOMGARANTE2, IFNULL(SG2.LOCALIDAD, '') AS LOCAGARANTE2, 
+      IFNULL(SG3.APELLIDO_NOMBRE, '') AS NOMGARANTE3, IFNULL(SG3.DOMICILIO, '') AS DOMGARANTE3, IFNULL(SG3.LOCALIDAD, '') AS LOCAGARANTE3
+FROM AYUDAS_PESOS AP
+INNER JOIN CUOTAS_AYUDAS_PESOS CAP ON (AP.NRO_AYUDA = CAP.NRO_AYUDA)
+INNER JOIN SOCIO S ON (AP.NUMERO_SOCIO = S.NUMERO_SOCIO)
+LEFT JOIN SOCIO SG1 ON (AP.NRO_SOCIO_GARANTE = SG1.NUMERO_SOCIO)
+LEFT JOIN SOCIO SG2 ON (AP.NRO_SOCIO_GARANTE_2 = SG2.NUMERO_SOCIO)
+LEFT JOIN SOCIO SG3 ON (AP.NRO_SOCIO_GARANTE_3 = SG3.NUMERO_SOCIO)
+WHERE AP.NUMERO_SOCIO = $P{PnroSocio} AND AP.NRO_AYUDA = $P{PnroAyuda}]]></query>
+	<field name="NRO_AYUDA" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="NRO_AYUDA"/>
+		<property name="com.jaspersoft.studio.field.label" value="NRO_AYUDA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ayudas_pesos"/>
+	</field>
+	<field name="NUMERO_SOCIO" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="NUMERO_SOCIO"/>
+		<property name="com.jaspersoft.studio.field.label" value="NUMERO_SOCIO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ayudas_pesos"/>
+	</field>
+	<field name="CANTIDAD_CUOTAS" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="CANTIDAD_CUOTAS"/>
+		<property name="com.jaspersoft.studio.field.label" value="CANTIDAD_CUOTAS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ayudas_pesos"/>
+	</field>
+	<field name="NUMERO_CUOTA" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="NUMERO_CUOTA"/>
+		<property name="com.jaspersoft.studio.field.label" value="NUMERO_CUOTA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cuotas_ayudas_pesos"/>
+	</field>
+	<field name="MONTO_CUOTA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MONTO_CUOTA"/>
+		<property name="com.jaspersoft.studio.field.label" value="MONTO_CUOTA"/>
+	</field>
+	<field name="APELLIDO_NOMBRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="APELLIDO_NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="APELLIDO_NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="DOMICILIO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DOMICILIO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DOMICILIO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="LOCALIDAD" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LOCALIDAD"/>
+		<property name="com.jaspersoft.studio.field.label" value="LOCALIDAD"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="TOTAL_PCIAL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TOTAL_PCIAL"/>
+		<property name="com.jaspersoft.studio.field.label" value="TOTAL_PCIAL"/>
+	</field>
+	<field name="NOMGARANTE1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="APELLIDO_NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMGARANTE1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="DOMGARANTE1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DOMICILIO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DOMGARANTE1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="LOCAGARANTE1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LOCALIDAD"/>
+		<property name="com.jaspersoft.studio.field.label" value="LOCAGARANTE1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="NOMGARANTE2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="APELLIDO_NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMGARANTE2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="DOMGARANTE2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DOMICILIO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DOMGARANTE2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="LOCAGARANTE2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LOCALIDAD"/>
+		<property name="com.jaspersoft.studio.field.label" value="LOCAGARANTE2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="NOMGARANTE3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="APELLIDO_NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMGARANTE3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="DOMGARANTE3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DOMICILIO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DOMGARANTE3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="LOCAGARANTE3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LOCALIDAD"/>
+		<property name="com.jaspersoft.studio.field.label" value="LOCAGARANTE3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="776">
+		<element kind="staticText" uuid="9855cdfa-5a52-412f-b389-896a7ad34928" stretchType="NoStretch" x="2" y="-11" width="207" height="40" bold="true">
+			<text><![CDATA[CAJA MUTUAL DE ASISTENCIA ECONOMICA Y PRESTACIONES SOCIALES DEL UNION FOOTBALL CLUB  ]]></text>
+		</element>
+		<element kind="staticText" uuid="41d983e9-eade-4215-8002-cf116ccb7623" x="2" y="33" width="182" height="30">
+			<text><![CDATA[Carlos Pellegrini 1124                                       Tel. 60588 - (2144) TOTORAS - Sta. Fe]]></text>
+		</element>
+		<element kind="staticText" uuid="a7aa1393-1b89-4d84-8320-b11650912eb3" x="315" y="-10" width="238" height="30" bold="true">
+			<text><![CDATA[LIQUIDACION DE AYUDA ECONOMICA MUTUAL EN CUOTAS]]></text>
+		</element>
+		<element kind="staticText" uuid="e0782446-fc17-4a30-be85-ee106bb0a0ab" x="0" y="72" width="184" height="20">
+			<text><![CDATA[Confeccionó: ____________________]]></text>
+		</element>
+		<element kind="line" uuid="cfb805c9-ae6d-4946-b9da-04235afb6743" x="271" y="70" width="1" height="281">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="ca1ef84b-48e6-4af2-bace-b87eaaa976ef" x="2" y="110" width="88" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Pagado Efectivo :  ]]></text>
+		</element>
+		<element kind="staticText" uuid="a95d0ed6-234f-4c4d-a3c6-d466a3096ad7" x="2" y="127" width="88" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Transferencia     : ]]></text>
+		</element>
+		<element kind="staticText" uuid="8a48eeaa-054e-4b8b-98ae-e2eee85dccf6" x="2" y="142" width="88" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Movimientos       : ]]></text>
+		</element>
+		<element kind="textField" uuid="3d6c0fb7-f7c7-4b36-a635-957edc13e185" x="100" y="111" width="160" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pefectivo}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="ec3ed58c-6356-4454-bb91-64b71a750c8f" x="100" y="127" width="160" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Ptransferencia}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="06cf6c4e-35a7-49ad-84e8-4b3b2aaa8d83" x="100" y="142" width="160" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pcheques}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="5a2de80b-2f64-4960-83e8-e297a1fe58d1" x="2" y="161" width="58" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Nro.Operac]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="8654c824-7693-4bbb-a1f6-828866cb979e" x="63" y="161" width="112" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Detalle]]></text>
+		</element>
+		<element kind="staticText" uuid="ec66cff6-23d2-49d3-92aa-1f6a8f7a4123" x="182" y="161" width="66" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Monto]]></text>
+		</element>
+		<element kind="textField" uuid="6d9950f1-fea3-483a-ba03-2d2bd5026412" x="-2" y="181" width="58" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{PnroCheque1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="29072530-5107-46ae-8f22-6c33872b03d6" x="-1" y="200" width="58" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{PnroCheque2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="6ec5fe94-caa2-49b4-b778-d69dffc1df27" x="-2" y="216" width="58" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{PnroCheque3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="59e7d7ed-b756-4fee-b728-8b6d6d4892f9" x="62" y="181" width="117" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pbanco1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="ac1a9dc7-e4c2-44bf-9dc6-dacf888a41a1" x="62" y="198" width="118" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pbanco2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="31713f7b-14ec-47b8-9356-ff0d112b100a" x="62" y="216" width="118" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pbanco3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="2441f0de-69be-442a-a159-98edafe6f325" x="181" y="181" width="88" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pcheque1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="69bcd55f-03df-4bcf-9e21-47ea7b86f2c2" x="181" y="199" width="88" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pcheque2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="ad4d5012-3782-4625-8159-a3dfaa7402cc" x="182" y="216" width="88" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pcheque3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="1f28d0a3-e25c-4bda-87f5-055efeb7a5b4" x="1" y="236" width="98" height="16">
+			<text><![CDATA[MONTO CUOTA :  ]]></text>
+		</element>
+		<element kind="textField" uuid="e2f4d9b6-ab6a-4505-be79-9d042643bf22" x="103" y="236" width="160" height="16">
+			<expression><![CDATA[$P{PmontoCuota}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="4b92852a-420a-4029-87f0-013fa0c1211e" x="3" y="268" width="252" height="16">
+			<text><![CDATA[Recibí conforme: ____________________________]]></text>
+		</element>
+		<element kind="staticText" uuid="46ec60cb-72e9-4323-871a-a61839ab3ecb" x="3" y="285" width="134" height="16">
+			<printWhenExpression><![CDATA[$P{Pexento} != null && !$P{Pexento}.equals( "E" )]]></printWhenExpression>
+			<text><![CDATA[Sellado Ley Pcial. 11123 :   ]]></text>
+		</element>
+		<element kind="textField" uuid="bea7981d-9b99-46e3-9ca5-740d5fc95035" x="138" y="285" width="120" height="16">
+			<printWhenExpression><![CDATA[$P{Pexento} != null && !$P{Pexento}.equals( "E" )]]></printWhenExpression>
+			<expression><![CDATA[$P{PmontoSellado}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="d6223d71-efa6-4af8-a67c-abf232563d39" x="3" y="301" width="253" height="16">
+			<printWhenExpression><![CDATA[$P{Pexento} != null && $P{Pexento}.equals( "E" )]]></printWhenExpression>
+			<text><![CDATA[Exento Sellado Art. 177 Cgo. Fiscal Inc. nuevo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="847ae91c-f0de-4dd3-86af-9ac463a60148" x="3" y="93" width="180" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "S" )]]></printWhenExpression>
+			<text><![CDATA[N O V A C I O N]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="c1e3feef-b61f-4e1e-990b-c1fb4bd61a7e" x="0" y="321" width="120" height="16">
+			<text><![CDATA[Fecha de Pago 1ra.cuota:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="5258c2f2-d5a2-450d-b23d-0827a72d4848" x="126" y="321" width="100" height="16">
+			<expression><![CDATA[$P{PfechaPago1Cuota}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="1aa8ac37-57ee-4083-85cd-b675ecff4804" x="0" y="341" width="40" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG1} != null && $P{PnroSocioG1} != 0]]></printWhenExpression>
+			<text><![CDATA[Garante:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="fc437c6b-bd4b-496e-90ce-3e970d631b84" x="42" y="341" width="118" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG1} != null && $P{PnroSocioG1} != 0]]></printWhenExpression>
+			<expression><![CDATA[$P{PnombreG1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="ffcbe11e-e68c-4978-8b10-a51c713cb65a" x="-1" y="356" width="40" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG2} != null && $P{PnroSocioG2} != 0]]></printWhenExpression>
+			<text><![CDATA[Garante:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="27effa60-9820-413b-9874-1b4473e1f1b2" x="41" y="356" width="119" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG2} != null && $P{PnroSocioG2} != 0]]></printWhenExpression>
+			<expression><![CDATA[$P{PnombreG2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="bb3f751e-199f-43f3-b674-07fcb8f72523" x="0" y="377" width="558" height="1"/>
+		<element kind="staticText" uuid="1a332c6e-f389-4754-8f99-88703770ddf7" stretchType="NoStretch" x="3" y="384" width="206" height="40" bold="true">
+			<text><![CDATA[CAJA MUTUAL DE ASISTENCIA ECONOMICA Y PRESTACIONES SOCIALES DEL UNION FOOTBALL CLUB  ]]></text>
+		</element>
+		<element kind="staticText" uuid="bb1c3fdc-11c7-4329-9f4b-f3c24f1b9a51" x="316" y="384" width="238" height="30" bold="true">
+			<text><![CDATA[LIQUIDACION DE AYUDA ECONOMICA MUTUAL EN CUOTAS]]></text>
+		</element>
+		<element kind="staticText" uuid="11c8363e-7916-4c10-bfc8-925bf8dc2545" x="3" y="432" width="182" height="30">
+			<text><![CDATA[Carlos Pellegrini 1124                                       Tel. 60588 - (2144) TOTORAS - Sta. Fe]]></text>
+		</element>
+		<element kind="staticText" uuid="2899e550-8f31-48ab-a79d-360f6dc973e1" x="1" y="474" width="184" height="20">
+			<text><![CDATA[Confeccionó: ____________________]]></text>
+		</element>
+		<element kind="staticText" uuid="4b0946eb-4948-495e-b1e6-44981befcb40" x="3" y="492" width="180" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "S" )]]></printWhenExpression>
+			<text><![CDATA[N O V A C I O N]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="c31a8792-c238-4a04-8ab8-adda7a55481f" x="2" y="509" width="88" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Pagado Efectivo :  ]]></text>
+		</element>
+		<element kind="textField" uuid="7562a94b-4e1c-4667-92d7-1be978955be6" x="100" y="510" width="166" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pefectivo}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="09f0e5a7-cb45-4ea4-8efe-55ef1b6a9539" x="2" y="526" width="88" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Transferencia     : ]]></text>
+		</element>
+		<element kind="textField" uuid="836f2561-e851-4dd5-8b90-2b8a1183d626" x="100" y="526" width="166" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Ptransferencia}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="e531bde1-3d65-4c74-9354-db3be5af36d5" x="2" y="541" width="88" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Movimientos       : ]]></text>
+		</element>
+		<element kind="textField" uuid="5803c790-4be5-454d-b151-a37ef61ebd53" x="100" y="541" width="166" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pcheques}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="53363610-23f9-4a1a-ae20-06f6faa8dd07" x="2" y="560" width="58" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Nro.Operac]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="bd789c06-1b26-446c-841f-5d9c8163c260" x="63" y="560" width="112" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Detalle]]></text>
+		</element>
+		<element kind="staticText" uuid="e5d54e33-4cfe-4c5e-a7d7-73eea44ddc08" x="183" y="560" width="66" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<text><![CDATA[Monto]]></text>
+		</element>
+		<element kind="textField" uuid="8758ba9f-aac7-425e-9e8a-e5238f1b9142" x="-2" y="580" width="58" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{PnroCheque1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="aa97eb4a-9f1a-4533-a44a-bceda303b90e" x="62" y="580" width="117" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pbanco1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="4c5abb0a-cb89-40a7-93bb-91d5a8f31bc0" x="182" y="580" width="88" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pcheque1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="0f0e5830-77f0-4981-8624-38ee212009ff" x="-1" y="599" width="58" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{PnroCheque2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="05d23992-8c1d-4e06-a266-83564939a0b2" x="62" y="597" width="117" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pbanco2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="d84b6180-33b2-4016-8e0c-01dbeaa854ea" x="182" y="598" width="88" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pcheque2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="c9ec598a-e60e-4aab-923b-d9e7b72c65f5" x="-2" y="615" width="58" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{PnroCheque3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="53c669b0-9b68-4f14-8c71-1b17e43b412b" x="62" y="615" width="117" height="16">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pbanco3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="c71efc0b-0528-4863-bb91-e174ea74506f" x="182" y="615" width="88" height="16" hTextAlign="Right">
+			<printWhenExpression><![CDATA[$P{Pnovacion} != null && $P{Pnovacion}.equals( "N" )]]></printWhenExpression>
+			<expression><![CDATA[$P{Pcheque3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="57f652c9-4ff5-4e44-a90b-44d9a2548a41" x="1" y="635" width="98" height="16">
+			<text><![CDATA[MONTO CUOTA :  ]]></text>
+		</element>
+		<element kind="textField" uuid="f724f4fb-6ff4-4b64-bc85-c38c190c671f" x="103" y="635" width="163" height="16">
+			<expression><![CDATA[$P{PmontoCuota}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="70fdb3fb-8ef0-4eb8-aace-47cd01557b8b" x="3" y="667" width="252" height="16">
+			<text><![CDATA[Recibí conforme: ____________________________]]></text>
+		</element>
+		<element kind="staticText" uuid="cd155d9a-93ed-41db-bf1c-6d3b28f39231" x="3" y="684" width="134" height="16">
+			<printWhenExpression><![CDATA[$P{Pexento} != null && !$P{Pexento}.equals( "E" )]]></printWhenExpression>
+			<text><![CDATA[Sellado Ley Pcial. 11123 :   ]]></text>
+		</element>
+		<element kind="textField" uuid="532eeca8-4ada-4b95-bfff-94137ed2cfb8" x="138" y="684" width="128" height="16">
+			<printWhenExpression><![CDATA[$P{Pexento} != null && !$P{Pexento}.equals( "E" )]]></printWhenExpression>
+			<expression><![CDATA[$P{PmontoSellado}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="39c686ff-fe89-4ff8-85ea-9845edd277b4" x="3" y="700" width="253" height="16">
+			<printWhenExpression><![CDATA[$P{Pexento} != null && $P{Pexento}.equals( "E" )]]></printWhenExpression>
+			<text><![CDATA[Exento Sellado Art. 177 Cgo. Fiscal Inc. nuevo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="3193d348-5d65-45b1-9175-8149781c40b8" x="0" y="720" width="120" height="16">
+			<text><![CDATA[Fecha de Pago 1ra.cuota:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="ef6934ad-de38-491e-af17-e558ac945163" x="126" y="720" width="100" height="16">
+			<expression><![CDATA[$P{PfechaPago1Cuota}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="e0c98baf-9c55-4728-9473-900896664390" x="0" y="740" width="40" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG1} != null && $P{PnroSocioG1} != 0]]></printWhenExpression>
+			<text><![CDATA[Garante:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="bf410046-58d0-4847-a305-32b7d857ef07" x="41" y="740" width="118" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG1} != null && $P{PnroSocioG1} != 0]]></printWhenExpression>
+			<expression><![CDATA[$P{PnombreG1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="5671039d-1dae-409e-8e46-e4c0afaacc13" x="-1" y="755" width="40" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG2} != null && $P{PnroSocioG2} != 0]]></printWhenExpression>
+			<text><![CDATA[Garante:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="03e43a1b-6ac2-4ff0-80e0-b18bab75a2be" x="40" y="755" width="118" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG2} != null && $P{PnroSocioG2} != 0]]></printWhenExpression>
+			<expression><![CDATA[$P{PnombreG2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="930ad8d4-0e51-4c4c-ad32-3dce848d551f" x="272" y="469" width="1" height="280">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="a41d7e86-f36b-4ba7-ade8-694124e77923" x="407" y="351" width="34" height="16">
+			<text><![CDATA[CAJA]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="5e4fe2ba-52f7-4d83-b5e3-9938ea9d65d4" x="410" y="749" width="34" height="16">
+			<text><![CDATA[SOCIO]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="f56ae3c5-1526-4b2d-8a4c-30fb383fcd81" x="282" y="73" width="50" height="18">
+			<text><![CDATA[Socio Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="d115c8e5-285a-40eb-b10c-c0c40d80aea1" x="332" y="73" width="56" height="18">
+			<expression><![CDATA[$P{PnroSocio}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="63d48890-e4d3-4c6c-98bd-6120808685c9" x="390" y="73" width="105" height="18">
+			<text><![CDATA[Ayuda Económica Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="2d0c2bc4-96a1-466c-8f1b-b8e578a75519" x="494" y="73" width="72" height="18" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroAyuda}]]></expression>
+		</element>
+		<element kind="staticText" uuid="5dc5c26c-06cc-4b2b-8849-792179aeef44" x="282" y="92" width="82" height="18">
+			<text><![CDATA[correspondiente a]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="0419f849-e3ae-46e2-aa6e-f89bfc9aaf38" x="368" y="92" width="180" height="16">
+			<expression><![CDATA[$P{PnombreSocio}]]></expression>
+		</element>
+		<element kind="staticText" uuid="c65de2c5-b732-4cd5-ba29-5a7e1d211d4c" x="282" y="112" width="180" height="18">
+			<text><![CDATA[Solicitud de Ayuda Económica de Fecha]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="1ce8cf24-1f90-4f57-b84a-94e6266b5cac" x="465" y="112" width="88" height="18">
+			<expression><![CDATA[$P{PfechaHoy}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="d3394cb7-2dca-4665-aec9-ca9c4c812c22" x="282" y="131" width="118" height="18">
+			<text><![CDATA[IMPORTE ACORDADO  ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="8f12e0ca-951b-4c9e-8c88-e7a6be3c5c74" x="408" y="130" width="145" height="18">
+			<expression><![CDATA[$P{PmontoAyuda}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="a34fa0b5-e614-4bcb-9c95-bd8470fb90d0" x="282" y="150" width="74" height="18">
+			<text><![CDATA[A DEDUCIR:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="ce7d9068-dcb4-40da-b447-21a5dc852b30" x="283" y="170" width="154" height="18">
+			<text><![CDATA[Tasa de servicios s/total]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="72c4ab91-28d5-4689-ac3a-aa8f7fea4e24" x="280" y="188" width="100" height="18">
+			<text><![CDATA[Ayuda Económica]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="77b5ab9c-95ba-491e-aab6-e8eac30328b0" x="283" y="214" width="34" height="18">
+			<text><![CDATA[Plazo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="d0c578a4-55e4-4767-8f6b-690c191bc157" x="323" y="215" width="38" height="18" hTextAlign="Center">
+			<expression><![CDATA[$P{PcantidadCuotas}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="95a8e977-d31d-4449-beab-5d2d2d8c3c4d" x="364" y="214" width="60" height="18" hTextAlign="Center">
+			<text><![CDATA[meses       ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="daa4ca81-96dc-48fa-85c7-b6f21caa4828" x="428" y="215" width="125" height="18">
+			<expression><![CDATA[$P{PimporteEnPalzo}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="1c937ac3-4c31-404b-a5e2-e0959c413e5c" x="280" y="240" width="100" height="18">
+			<text><![CDATA[Res.Gastos Admin. ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="7622eac2-f336-4eb3-9647-7b5df18ef82a" x="280" y="260" width="100" height="18">
+			<text><![CDATA[Impuesto Pcial.       ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="53968a4d-6872-4051-b7a5-117077db0807" x="386" y="240" width="168" height="18" hTextAlign="Right">
+			<expression><![CDATA[$P{PgastosAdmin}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="4474ab88-3b17-410d-8e83-ff8385f7fde6" x="381" y="259" width="170" height="18" hTextAlign="Right">
+			<expression><![CDATA[$P{PmontoSelladoPcial}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="line" uuid="a13e693c-3399-4e31-a072-b7c00169d777" x="280" y="288" width="110" height="1"/>
+		<element kind="staticText" uuid="ea2c14ab-6deb-4148-9259-55c3e00b3fac" x="403" y="278" width="16" height="18">
+			<text><![CDATA[]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="e4d7a71c-a6f3-4b60-a911-4148f7a8b8cb" x="424" y="278" width="129" height="18" hTextAlign="Right">
+			<expression><![CDATA[$P{Ptotal1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="66d4a2e1-b0fa-47ca-a15b-25c4cf49b540" x="280" y="310" width="138" height="18">
+			<text><![CDATA[TOTAL LIQUIDO A COBRAR:      ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="4d6940ce-7e3f-459d-86df-79c3b9451fa3" x="422" y="310" width="131" height="18">
+			<expression><![CDATA[$P{PmontoSolicitado}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="db7b48da-9cdf-473d-87b1-984750276d6a" x="279" y="472" width="50" height="18">
+			<text><![CDATA[Socio Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="d7c70964-d781-4ff0-8f02-b3a6de315520" x="329" y="472" width="56" height="18">
+			<expression><![CDATA[$P{PnroSocio}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="8f2e9811-082f-499d-87a0-d6fc11c89ac8" x="386" y="472" width="105" height="18">
+			<text><![CDATA[Ayuda Económica Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="2814cf8f-5dee-499a-b334-3bc2b2b44f6c" x="491" y="472" width="72" height="18" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroAyuda}]]></expression>
+		</element>
+		<element kind="staticText" uuid="87b176fa-7892-43ce-9553-a5ab620e926e" x="279" y="491" width="82" height="18">
+			<text><![CDATA[correspondiente a]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="1b674a12-a68a-44f1-9993-6128a04a1a13" x="365" y="491" width="180" height="16">
+			<expression><![CDATA[$P{PnombreSocio}]]></expression>
+		</element>
+		<element kind="staticText" uuid="2dd937aa-7fb8-4daf-9844-5c8231640926" x="279" y="511" width="180" height="18">
+			<text><![CDATA[Solicitud de Ayuda Económica de Fecha]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="43566c0d-6019-463a-91e7-c4c65ff62c8c" x="462" y="511" width="88" height="18">
+			<expression><![CDATA[$P{PfechaHoy}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="c2f9afdb-c487-41b4-b69e-f5e98706db38" x="279" y="530" width="118" height="18">
+			<text><![CDATA[IMPORTE ACORDADO  ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="b2fb910d-f3a5-4cbc-a3ba-39a71ba7edd6" x="405" y="529" width="148" height="18">
+			<expression><![CDATA[$P{PmontoAyuda}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="f04833f1-fbbc-4d0e-b4fd-90dd2246842e" x="279" y="549" width="74" height="18">
+			<text><![CDATA[A DEDUCIR:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="6278a05a-3220-4fc0-a09a-8b20f5d3adf4" x="280" y="569" width="154" height="18">
+			<text><![CDATA[Tasa de servicios s/total]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="7772591e-0175-43dc-b9bd-4cca395447d1" x="277" y="587" width="100" height="18">
+			<text><![CDATA[Ayuda Económica]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="5c38c393-0aa3-4d3c-ac34-5d3f7f535d4d" x="277" y="639" width="100" height="18">
+			<text><![CDATA[Res.Gastos Admin. ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="c29dbb21-4a96-4987-ba93-4c2d71dba4cb" x="378" y="639" width="175" height="18" hTextAlign="Right">
+			<expression><![CDATA[$P{PgastosAdmin}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="f93d1d95-a13a-439f-a852-f9b6c23487ba" x="277" y="659" width="100" height="18">
+			<text><![CDATA[Impuesto Pcial.       ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="edb75781-858a-4138-a555-87bbdb9a7bb4" x="378" y="658" width="175" height="18" hTextAlign="Right">
+			<expression><![CDATA[$P{PmontoSelladoPcial}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="line" uuid="1f0e7dc3-4e86-4f86-a310-dd38bf3a550f" x="277" y="687" width="110" height="1"/>
+		<element kind="staticText" uuid="f2c6415f-00c8-4af3-848f-5901593fd462" x="403" y="677" width="16" height="18">
+			<text><![CDATA[]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="857ff79e-4602-42e1-8bec-6e9c5c77b84e" x="424" y="677" width="126" height="18" hTextAlign="Right">
+			<expression><![CDATA[$P{Ptotal1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="86cc2a37-ef52-4883-bf84-38fd92def033" x="277" y="709" width="141" height="18">
+			<text><![CDATA[TOTAL LIQUIDO A COBRAR:      ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="f10bab6c-4c56-44d4-807c-52074166b651" x="419" y="709" width="135" height="18">
+			<expression><![CDATA[$P{PmontoSolicitado}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="305eea76-1892-4e8b-9412-3907e3d0ed98" x="277" y="613" width="34" height="18">
+			<text><![CDATA[Plazo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="c77d584b-1241-48b0-87e7-fe85d84a722b" x="317" y="614" width="38" height="18" hTextAlign="Center">
+			<expression><![CDATA[$P{PcantidadCuotas}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="54e869d4-bd3e-4651-9ace-772a1629d90b" x="358" y="613" width="60" height="18" hTextAlign="Center">
+			<text><![CDATA[meses       ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="bb7d672a-2643-4b52-8fcf-41584609f47c" x="422" y="614" width="131" height="18">
+			<expression><![CDATA[$P{PimporteEnPalzo}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="48ccae09-9dbb-44a8-8557-efb071829368" x="160" y="755" width="40" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG3} != null && $P{PnroSocioG3} != 0]]></printWhenExpression>
+			<text><![CDATA[Garante:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="7447ddb8-945a-43d6-afe0-103a9ace7fa6" x="202" y="755" width="118" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG3} != null && $P{PnroSocioG3} != 0]]></printWhenExpression>
+			<expression><![CDATA[$P{PnombreG3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="bab6ab98-1a7d-426f-bf46-14da77bc9860" x="160" y="356" width="40" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG3} != null && $P{PnroSocioG3} != 0]]></printWhenExpression>
+			<text><![CDATA[Garante:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="5ce031a2-6efc-4a17-b166-302d545e8153" x="202" y="356" width="118" height="16">
+			<printWhenExpression><![CDATA[$P{PnroSocioG3} != null && $P{PnroSocioG3} != 0]]></printWhenExpression>
+			<expression><![CDATA[$P{PnombreG3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+	</title>
+	<detail>
+		<band height="599" splitType="Stretch">
+			<element kind="staticText" uuid="b7f62b57-e4b7-4bc7-9028-ce24bb6adb08" stretchType="NoStretch" x="-11" y="10" width="220" height="40">
+				<text><![CDATA[CAJA MUTUAL DE ASISTENCIA ECONOMICA Y PRESTACIONES SOCIALES DEL                UNION FOOTBALL CLUB  ]]></text>
+			</element>
+			<element kind="staticText" uuid="b8453489-c31e-41b6-9838-63771bcc6746" x="-10" y="70" width="218" height="30">
+				<text><![CDATA[Carlos Pellegrini 1124                                       Tel. 60588 - (2144) TOTORAS - Sta. Fe]]></text>
+			</element>
+			<element kind="rectangle" uuid="02710771-6a6b-4fab-83de-619c1806900b" x="330" y="10" width="230" height="90">
+				<printWhenExpression><![CDATA[$P{Pexento} != null && $P{Pexento}.equals( "NE" )]]></printWhenExpression>
+			</element>
+			<element kind="staticText" uuid="9e8140bf-4261-4ea3-8150-6941efc06f76" x="340" y="15" width="190" height="30">
+				<printWhenExpression><![CDATA[$P{Pexento} != null && $P{Pexento}.equals( "NE" )]]></printWhenExpression>
+				<text><![CDATA[IMP. DE SELLOS PCIAL. LEY N° 11123     AGENTE DE RET. N° 202-000069-7]]></text>
+			</element>
+			<element kind="staticText" uuid="87868cc8-96d3-4fab-bad6-34150af50e53" x="340" y="63" width="110" height="20">
+				<printWhenExpression><![CDATA[$P{Pexento} != null && $P{Pexento}.equals( "NE" )]]></printWhenExpression>
+				<text><![CDATA[A DEPOSITAR EL DIA:]]></text>
+			</element>
+			<element kind="staticText" uuid="8551f73c-72b3-4fb2-8f33-8cbf873ce2b0" x="340" y="84" width="110" height="14">
+				<printWhenExpression><![CDATA[$P{Pexento} != null && $P{Pexento}.equals( "NE" )]]></printWhenExpression>
+				<text><![CDATA[TOTAL ]]></text>
+			</element>
+			<element kind="staticText" uuid="37f64f43-5181-4d50-bd98-3063fb7bc7bc" x="-6" y="128" width="56" height="18">
+				<text><![CDATA[Socio Nro. ]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d616a63d-c576-4472-bba5-21cfd40611f1" x="-5" y="150" width="144" height="18">
+				<text><![CDATA[Ayuda Economica Mutual Nro.]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="fd395c35-b1dd-44f9-858a-329c1fb265cb" x="330" y="112" width="50" height="18">
+				<text><![CDATA[Por ]]></text>
+			</element>
+			<element kind="staticText" uuid="22a7499b-9548-467e-820e-de076f2c8136" x="330" y="131" width="20" height="14" hTextAlign="Center">
+				<text><![CDATA[/]]></text>
+			</element>
+			<element kind="staticText" uuid="ec0c4cf3-ab76-45d3-80f8-50591de7313d" x="352" y="150" width="40" height="18">
+				<text><![CDATA[Totoras, ]]></text>
+			</element>
+			<element kind="staticText" uuid="7bd8ffbe-572c-4d11-b1ce-89bb2f06fb9e" x="-11" y="180" width="570" height="30" hTextAlign="Justified">
+				<text><![CDATA[Pagare/mos mancomunada y solidariamente a la VISTA a la CAJA MUTUAL DE ASISTENCIA ECONOMICA Y PRESTACIONES / SOCIALES DEL UNION FOOTBALL CLUB o a su orden, la cantidad de Pesos: ]]></text>
+			</element>
+			<element kind="staticText" uuid="5409ddb8-ed9a-46cd-a5fe-203cb86ccdad" x="-10" y="221" width="569" height="30" hTextAlign="Justified">
+				<text><![CDATA[en su domicilio de calle Carlos Pellegrini 1124 de la ciudad de Totoras (Santa Fe), por igual valor recibido en efectivo a nuestra entera satisfaccion, pagadero 'sin protesto'. - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -]]></text>
+			</element>
+			<element kind="staticText" uuid="9d538d67-ebdc-4220-af86-98dc26e97370" x="-11" y="248" width="570" height="138" hTextAlign="Justified">
+				<text><![CDATA[Dejamos expresamente aclarado en nuestro caracter de libradores, que de conformidad con lo dispuesto en el Art 36 del Dec-Ley 5965/63, acordamos ampliar el plazo de presentacion para el pago de este pagare hasta un maximo de          años a contar desde la fecha de su libramiento. La falta de pago a la presentacion del presente producira la mora automatica y de pleno derecho de los firmantes, sin necesidad de interpelacion judicial o extrajudicial alguna y SIN PROTESTO, haciendose exigible el capital adeudado con mas un interes punitorio del _______% anual, capitalizable mensualmente, costos y costas. Renunciamos a oponer excepcion alguna que no sea la de pago comprobado con documento escrito emanado a tal efecto de la acreedora a quien autorizamos a designar martillero en caso subasta de bienes.- Los firmantes constituyen domicilio real en las direcciones abajo indicadas y pactan la jurisdiccion y competencia de los Tribunales Ordinarios de la ciudad de Cañada de Gomez, renunciando a todo otro fuero o jurisdiccion que pudiere corresponder, inclusive el Federal.]]></text>
+			</element>
+			<element kind="staticText" uuid="e4c88d76-35b6-451b-8fa5-3d17745cdbef" x="-10" y="400" width="50" height="20">
+				<text><![CDATA[Solicitante: ]]></text>
+			</element>
+			<element kind="staticText" uuid="0bbb8da1-5c6e-4563-bb2f-516d140746f4" x="-11" y="420" width="50" height="20">
+				<text><![CDATA[Aclaracion: ]]></text>
+			</element>
+			<element kind="line" uuid="04f8d427-747e-4e63-af34-b279d3e60cda" x="50" y="413" width="130" height="1"/>
+			<element kind="staticText" uuid="bef2a92c-9ae0-4292-bbc2-3805efc051d0" x="185" y="399" width="65" height="20">
+				<text><![CDATA[1° Garante: ]]></text>
+			</element>
+			<element kind="staticText" uuid="781adba1-c7e1-406d-ab92-d2dd9b019068" x="186" y="420" width="50" height="20">
+				<text><![CDATA[Aclaracion: ]]></text>
+			</element>
+			<element kind="line" uuid="89a4f898-5c45-42d5-b05f-feecf2c86383" x="240" y="413" width="130" height="1"/>
+			<element kind="staticText" uuid="36c9ed47-9823-4378-a75d-54890968a1be" x="380" y="398" width="65" height="20">
+				<text><![CDATA[2° Garante: ]]></text>
+			</element>
+			<element kind="staticText" uuid="53c366cb-ab1f-4e6b-ad86-8bcdaaff70a9" x="381" y="418" width="50" height="20">
+				<text><![CDATA[Aclaracion: ]]></text>
+			</element>
+			<element kind="line" uuid="be5fc5ec-8ee5-44a5-baa2-b92760caf63b" x="435" y="410" width="130" height="1"/>
+			<element kind="textField" uuid="a79650f2-d135-4475-bc17-68fb2c7d8f75" x="210" y="10" width="120" height="40" linkType="None" linkTarget="Self">
+				<expression><![CDATA[$P{Pexento} != null && $P{Pexento}.equals( "E" ) ? "   Exento Sellado Art. 177\n   Codigo Fiscal Inc. Nuevo" : ""]]></expression>
+			</element>
+			<element kind="textField" uuid="f0832e35-c35e-4b63-812a-7c286b0cfbb0" x="450" y="63" width="100" height="21">
+				<expression><![CDATA[$P{Pexento} != null && $P{Pexento}.equals( "NE" ) ? $P{PfechaDepositarFormateada} : ""]]></expression>
+			</element>
+			<element kind="textField" uuid="68b30de9-8938-4f8a-9993-d9edc97e437a" x="450" y="84" width="100" height="16">
+				<expression><![CDATA[$P{Pexento} != null && $P{Pexento}.equals( "NE" ) ? $F{TOTAL_PCIAL} : ""]]></expression>
+			</element>
+			<element kind="textField" uuid="ada9d1bf-4314-4507-bc79-4d0552f7a50a" x="50" y="128" width="115" height="18">
+				<expression><![CDATA[$P{PnroSocio}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="d55f27c4-70ef-4d60-9a2e-473b2d148be1" x="140" y="150" width="115" height="18">
+				<expression><![CDATA[$P{PnroAyuda}]]></expression>
+			</element>
+			<element kind="textField" uuid="2f48ed9b-a297-4045-939b-33666cb52bea" x="392" y="150" width="167" height="18">
+				<expression><![CDATA[$P{PfechaHoyFormateada}]]></expression>
+			</element>
+			<element kind="textField" uuid="f2a04e4f-1b45-4261-80e5-530ee24362c2" x="381" y="112" width="158" height="18">
+				<expression><![CDATA[$F{MONTO_CUOTA}]]></expression>
+			</element>
+			<element kind="textField" uuid="14d53c3c-e75c-405d-9238-a02bb44828ce" x="290" y="131" width="40" height="15" hTextAlign="Right">
+				<expression><![CDATA[$F{NUMERO_CUOTA}]]></expression>
+			</element>
+			<element kind="textField" uuid="4883fcf4-f1e7-44a9-bb2b-4db242f0e72c" x="350" y="130" width="40" height="15">
+				<expression><![CDATA[$F{CANTIDAD_CUOTAS}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="6da7ea3c-d803-4593-ad92-752ba0adceb3" x="-11" y="206" width="580" height="20">
+				<expression><![CDATA[$P{PmontoEnPalabras}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="629e55b1-6a3b-456f-82e5-db1726753c1f" x="471" y="261" width="25" height="13">
+				<expression><![CDATA[$P{PmaximoAnio}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="525e1d92-880c-475a-bf85-ea3be57d2f61" x="49" y="422" width="130" height="16">
+				<expression><![CDATA[$F{APELLIDO_NOMBRE}]]></expression>
+			</element>
+			<element kind="textField" uuid="412725f1-4fee-4bae-9ce7-48d5ca16c7d2" x="245" y="421" width="130" height="16">
+				<expression><![CDATA[$F{NOMGARANTE1}]]></expression>
+			</element>
+			<element kind="textField" uuid="8091949f-8dd3-4b6f-9c13-d9ca5b3ca6d7" x="435" y="419" width="130" height="16">
+				<expression><![CDATA[$F{NOMGARANTE2}]]></expression>
+			</element>
+			<element kind="textField" uuid="d1ff4965-e618-4fb0-a08a-7d9e8071745a" x="49" y="440" width="130" height="16">
+				<expression><![CDATA[$F{DOMICILIO}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="62c71552-708a-4b10-ba69-241c07e277f8" x="49" y="459" width="130" height="16">
+				<expression><![CDATA[$F{LOCALIDAD}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="514e999e-9fbc-44b8-8465-603f04cab5ce" x="245" y="440" width="130" height="16">
+				<expression><![CDATA[$F{DOMGARANTE1}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="ac428bf5-1bea-4e3d-8f0b-da90e06d01be" x="245" y="459" width="130" height="16">
+				<expression><![CDATA[$F{LOCAGARANTE1}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="7273923e-043c-4b76-968e-d1e8ad6a9565" x="435" y="438" width="130" height="16">
+				<expression><![CDATA[$F{DOMGARANTE2}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="06353073-2c35-4abb-8cce-a864fa28d2c1" x="435" y="457" width="130" height="16">
+				<expression><![CDATA[$F{LOCAGARANTE2}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="break" uuid="2efa1f93-19d4-43c8-bfab-7a0266fb7841" x="0" y="588" width="100" height="1"/>
+			<element kind="staticText" uuid="5c58249f-3baf-4904-805c-558d9fb42b50" x="190" y="496" width="65" height="20">
+				<text><![CDATA[3° Garante: ]]></text>
+			</element>
+			<element kind="line" uuid="e0406101-803d-4de9-92a3-2add5223b002" x="245" y="508" width="130" height="1"/>
+			<element kind="staticText" uuid="bed44c6f-ea8b-47ed-a857-3221c7e551b6" x="191" y="516" width="50" height="20">
+				<text><![CDATA[Aclaracion: ]]></text>
+			</element>
+			<element kind="textField" uuid="a3991d3e-c62a-4f96-97ab-ca064855025c" x="245" y="517" width="130" height="16">
+				<expression><![CDATA[$F{NOMGARANTE3}]]></expression>
+			</element>
+			<element kind="textField" uuid="fe5e3b83-630e-4990-a38c-71e8c3a747c7" x="245" y="536" width="130" height="16">
+				<expression><![CDATA[$F{DOMGARANTE3}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="44bc8172-e376-4fe8-b47b-c3d0bbe50954" x="245" y="555" width="130" height="16">
+				<expression><![CDATA[$F{LOCAGARANTE3}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+		</band>
+	</detail>
+	<summary height="648">
+		<element kind="staticText" uuid="fbd3e405-bc0b-4d03-ac1a-ee876162ea73" stretchType="NoStretch" x="-15" y="8" width="191" height="40">
+			<text><![CDATA[CAJA MUTUAL DE ASISTENCIA ECONOMICA Y PRESTACIONES SOCIALES DEL UNION F. CLUB  ]]></text>
+		</element>
+		<element kind="staticText" uuid="9c73b40a-346e-48aa-9fea-59f8fa811e36" x="-15" y="68" width="218" height="30">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == $V{PAGE_COUNT}]]></printWhenExpression>
+			<text><![CDATA[Carlos Pellegrini 1124 - TOTORAS (Santa Fe)]]></text>
+		</element>
+		<element kind="rectangle" uuid="105bd418-f5e0-4854-94b4-077ad78e8704" x="332" y="3" width="221" height="90"/>
+		<element kind="staticText" uuid="92f1dce8-579c-4d98-a6b8-aef58171bfcf" x="341" y="8" width="190" height="30">
+			<text><![CDATA[IMP. DE SELLOS PCIAL. LEY N° 11123     AGENTE DE RET. N° 202-000069-7]]></text>
+		</element>
+		<element kind="staticText" uuid="48320759-3f9d-4f69-a6d0-36a7bf3fbd81" x="337" y="56" width="110" height="20">
+			<text><![CDATA[A DEPOSITAR EL DIA:]]></text>
+		</element>
+		<element kind="textField" uuid="8608c241-77c5-4ad4-996c-6d4ba60ee548" x="447" y="56" width="100" height="21">
+			<expression><![CDATA[$P{PfechaDepositarFormateada}]]></expression>
+		</element>
+		<element kind="staticText" uuid="9450fcf4-6288-4b30-bc43-52bd521bcdfa" x="337" y="77" width="110" height="14">
+			<text><![CDATA[TOTAL ]]></text>
+		</element>
+		<element kind="textField" uuid="ad859713-e572-4928-87c5-6ddaa975adf2" x="447" y="77" width="100" height="16">
+			<expression><![CDATA[$P{PmontoSelladoPcial}]]></expression>
+		</element>
+		<element kind="staticText" uuid="dd07ab25-5d48-4223-8569-99993e5b5dd3" x="324" y="110" width="230" height="20">
+			<text><![CDATA[Totoras, ___ de _____________ de 20___]]></text>
+		</element>
+		<element kind="staticText" uuid="f70f5114-5d84-4b96-9960-fb029cc87ac9" x="199" y="9" width="56" height="18">
+			<text><![CDATA[Socio Nro.: ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="5c29f2f9-92c6-48a1-88b2-4d44a1978537" x="251" y="9" width="73" height="18" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroSocio}]]></expression>
+		</element>
+		<element kind="staticText" uuid="5c44bf62-5fd1-421b-8db9-2f3abd85014c" x="144" y="27" width="110" height="18">
+			<text><![CDATA[Ayuda Económica Nro.:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="dfa7c656-ccdb-413b-9af7-c322130448c0" x="249" y="27" width="78" height="18" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroAyuda}]]></expression>
+		</element>
+		<element kind="staticText" uuid="0d3b7cf8-d89f-46ae-9b5d-a3ef2b37c70b" x="-11" y="132" width="239" height="19">
+			<text><![CDATA[Al Consejo Directivo de la Caja Mutual]]></text>
+		</element>
+		<element kind="staticText" uuid="a731f3ab-36a4-4bc1-857c-83a099828e04" x="-12" y="146" width="240" height="20">
+			<text><![CDATA[de A.E. y P.S. del Union Football Club]]></text>
+		</element>
+		<element kind="staticText" uuid="9057355c-6934-484d-8062-63b6aae31a5c" x="-13" y="163" width="330" height="16">
+			<text><![CDATA[Solicitamos una Ayuda Economica Mutual por la suma de Pesos:]]></text>
+		</element>
+		<element kind="textField" uuid="d30aa2f0-b184-4420-b265-149c534bdb3c" x="-14" y="178" width="580" height="18">
+			<expression><![CDATA[$P{PmontoAyudaEnPalabras}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="9327788b-4e6b-440f-aafe-b62277e4a796" x="-12" y="194" width="452" height="18">
+			<text><![CDATA[la que de conformidad con la reglamentacion vigente cuya aceptacion ratificamos, destinaremos a :]]></text>
+		</element>
+		<element kind="textField" uuid="7ad9ed45-aadf-4c25-b20b-f8b633a9aa1d" x="-13" y="213" width="564" height="18">
+			<expression><![CDATA[$P{PdestinoAyuda} != null && !$P{PdestinoAyuda}.equals( "" ) ? $P{PdestinoAyuda} : "________________________________________________________________________________________________________"]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="424bd614-009d-4aaa-a23f-50c29e4a10f3" x="-12" y="230" width="370" height="18">
+			<text><![CDATA[Nos obligamos SOLIDARIAMENTE a reembolsar dicha suma mediante el pago de ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="6b0f9d6d-bcf4-4214-a11a-820760e1e360" x="362" y="231" width="15" height="18">
+			<expression><![CDATA[$F{CANTIDAD_CUOTAS}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="43eea32d-f1df-4bc2-b431-14de0177fc72" x="377" y="231" width="198" height="18">
+			<text><![CDATA[cuotas mensuales y consecutivas de pesos:]]></text>
+		</element>
+		<element kind="textField" uuid="49c180e3-9c59-4779-84ef-7e628d00b3c7" x="-11" y="245" width="580" height="18">
+			<expression><![CDATA[$P{PmontoEnPalabras}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="980d4393-9370-45e1-9941-2f005e54104a" x="-11" y="258" width="160" height="18">
+			<text><![CDATA[cada una, venciendo la primera el ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="e617fd62-9f8c-4197-99aa-4c55fb81d676" x="148" y="258" width="112" height="18" hTextAlign="Center">
+			<expression><![CDATA[$P{PfechaVencimiento1Cuota}]]></expression>
+		</element>
+		<element kind="staticText" uuid="f4ce0b6d-e7a6-4573-9cf9-c4a84871429a" x="263" y="258" width="276" height="18">
+			<text><![CDATA[y las restantes el mismo dia de los meses inmediatos ///]]></text>
+		</element>
+		<element kind="staticText" uuid="b3382191-d37c-4cb2-a596-797762d21861" x="-10" y="274" width="574" height="56">
+			<text><![CDATA[subsiguientes, hasta la cancelacion total y definitiva, siendo el domicilio de pago C.Pellegrini 1124 de Totoras (Sta. Fe). La falta de pago de una cuota a su vencimiento producira la mora de pleno derecho sin necesidad de interpelacion extrajudicial o judicial, operando la caducidad de todos los plazos restantes y haciendose exigible el saldo total de esta obligacion por la via ejecutiva con mas un interes punitorio del _____% anual, capitalizable mensualmente, costos y costas.]]></text>
+		</element>
+		<element kind="staticText" uuid="427c640f-dd27-48a8-ae09-79ee48087d32" x="-10" y="328" width="574" height="110">
+			<text><![CDATA[La operacion sera instrumentada mediante la firma de              pagares a la vista, en los que constaran los importes adeudados//                                                                                                                                correspondientes a cada cuota y la clausula 'SIN PROTESTO'. En caso de incumplimiento se presentaran dichos pagares para su ejecucion judicial, reclamandose el importe del capital, intereses, capitalizacion de intereses, costos y costas. Las /clausulas de los Pagares a la vista que se nos exhiben y firmaremos una vez recibido el prestamo integran la presente solicitud. Asimismo, ratificamos nuestra conformidad para la aplicacion de la correspondiente tasa de servicios. Facultamos/a la Caja Mutual de Asistencia Economica y Prestaciones Sociales del Union F.Club a que haga efectivo el monto de la deuda vencida con los fondos que tengamos en nuestras cuentas de Ahorro Mutual ___________________________________ y/o ________ _________________. Constituimos domicilios especiales a todos los efectos legales en los abajo indicados.]]></text>
+		</element>
+		<element kind="textField" uuid="dfa0c6a0-86e4-4364-b4a1-fccde6d78f30" x="232" y="328" width="35" height="18" hTextAlign="Center">
+			<expression><![CDATA[$P{PcantidadCuotas}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="d7876c66-1a72-45bb-a6ed-4f760ef33bdb" x="-10" y="474" width="50" height="20">
+			<text><![CDATA[Solicitante: ]]></text>
+		</element>
+		<element kind="staticText" uuid="e6d227ea-8814-41b6-af4e-20ff1e677104" x="-11" y="494" width="50" height="20">
+			<text><![CDATA[Aclaracion: ]]></text>
+		</element>
+		<element kind="line" uuid="c9644ee6-31de-4376-9743-8fab5b2b0382" x="50" y="487" width="130" height="1"/>
+		<element kind="textField" uuid="73e82275-0df1-4ab9-9dc1-387de4c057b0" x="49" y="496" width="130" height="16">
+			<expression><![CDATA[$P{PnombreSocio}]]></expression>
+		</element>
+		<element kind="textField" uuid="b56b8753-effc-4236-9d0b-34ba66aff549" x="49" y="514" width="130" height="16">
+			<expression><![CDATA[$P{PdomicilioSocio}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="80843cde-ea7c-412c-b6d1-44fbe37a746d" x="49" y="533" width="130" height="16">
+			<expression><![CDATA[$P{PlocalidadSocio}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="2473ad90-f6b9-4f55-af69-638fd56ef605" x="185" y="473" width="65" height="20">
+			<text><![CDATA[1° Garante: ]]></text>
+		</element>
+		<element kind="staticText" uuid="11cf383e-09c3-4be2-a97f-ea5e7e0da874" x="186" y="494" width="50" height="20">
+			<text><![CDATA[Aclaracion: ]]></text>
+		</element>
+		<element kind="line" uuid="cb0fb7a6-2b9c-48b7-b4ff-90a72cd48c00" x="240" y="487" width="130" height="1"/>
+		<element kind="textField" uuid="98d0d607-0cd1-4b5a-868a-f0f48ba1cbed" x="245" y="495" width="130" height="16">
+			<expression><![CDATA[$P{PnombreG1}]]></expression>
+		</element>
+		<element kind="textField" uuid="7879cfb8-2516-481c-a07c-95b890073076" x="245" y="514" width="130" height="16">
+			<expression><![CDATA[$P{PdomicilioG1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="f48e3bce-f448-4a8c-9d2f-aa2aa21baeeb" x="245" y="533" width="130" height="16">
+			<expression><![CDATA[$P{PlocalidadG1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="1bc52053-4cad-47e9-9eec-5b7d6a77b159" x="380" y="472" width="65" height="20">
+			<text><![CDATA[2° Garante: ]]></text>
+		</element>
+		<element kind="staticText" uuid="799127fc-c919-4ecb-81d0-d4ed0a4b0caa" x="381" y="492" width="50" height="20">
+			<text><![CDATA[Aclaracion: ]]></text>
+		</element>
+		<element kind="line" uuid="c0b262ec-5b09-4930-aa4e-b406e3616e10" x="435" y="484" width="130" height="1"/>
+		<element kind="textField" uuid="7d8b1ec3-caad-40a7-bd17-d653f712c1fd" x="435" y="493" width="130" height="16">
+			<expression><![CDATA[$P{PnombreG2}]]></expression>
+		</element>
+		<element kind="textField" uuid="e76953c9-4d11-422a-9e2c-4b6b29229b87" x="435" y="512" width="130" height="16">
+			<expression><![CDATA[$P{PdomicilioG2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="ed0b553c-c530-4d2a-83de-7942abb36f3e" x="435" y="531" width="130" height="16">
+			<expression><![CDATA[$P{PlocalidadG2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="a306e747-a09b-4b31-8140-ef84479f5849" x="190" y="565" width="65" height="20">
+			<text><![CDATA[3° Garante: ]]></text>
+		</element>
+		<element kind="line" uuid="88127b45-eda6-4fd5-9864-02ba2eb18e1e" x="245" y="577" width="130" height="1"/>
+		<element kind="staticText" uuid="1307e01a-7f86-4fc3-b229-e1512c91ac8d" x="191" y="585" width="50" height="20">
+			<text><![CDATA[Aclaracion: ]]></text>
+		</element>
+		<element kind="textField" uuid="2fbe3b28-1283-4fc8-b5cb-6d548d645d41" x="245" y="586" width="130" height="16">
+			<expression><![CDATA[$P{PnombreG3}]]></expression>
+		</element>
+		<element kind="textField" uuid="bf0d973b-2366-4602-8042-db7aa4e6845a" x="245" y="605" width="130" height="16">
+			<expression><![CDATA[$P{PdomicilioG3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="14daa167-758d-4d5b-a51c-e5cb7b911dd6" x="245" y="624" width="130" height="16">
+			<expression><![CDATA[$P{PlocalidadG3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+	</summary>
+</jasperReport>

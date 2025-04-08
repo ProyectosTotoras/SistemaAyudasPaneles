@@ -1,0 +1,454 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="ReciboPagoCuotaSocietaria" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87e8d06f-aee9-4f51-bbf4-bbb8be1be163">
+	<parameter name="PnroSocio" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnombreSocio" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PdeudaSocioGarante3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PdeudaSocioGarante2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PdeudaSocioGarante1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PperiodoHastaGarante3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PperiodoHastaGarante2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PperiodoDesdeGarante3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PperiodoDesdeGarante2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PperiodoHastaGarante1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PperiodoDesdeGarante1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnroSocioGarante3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnroSocioGarante2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnroSocioGarante1" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnombreGarante3" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PperiodoDesde" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PperiodoHasta" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PdeudaSocio" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PtotalACobrar" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnombreGarante2" forPrompting="false" class="java.lang.String"/>
+	<parameter name="PnombreGarante1" forPrompting="false" class="java.lang.String"/>
+	<query language="sql"><![CDATA[]]></query>
+	<title height="783" splitType="Stretch">
+		<element kind="staticText" uuid="49597448-2e19-45b4-bfd0-05922ad6670e" stretchType="NoStretch" x="4" y="5" width="206" height="40" bold="true">
+			<text><![CDATA[CAJA MUTUAL DE ASISTENCIA ECONOMICA Y PRESTACIONES SOCIALES DEL UNION FOOTBALL CLUB  ]]></text>
+		</element>
+		<element kind="staticText" uuid="52a4aa84-bc35-4a3a-b1c7-bf5e9b9356b6" x="2" y="49" width="182" height="30" bold="true">
+			<text><![CDATA[          Carlos Pellegrini 1124                                       Tel. 60588 - (2144) TOTORAS - Sta. Fe]]></text>
+		</element>
+		<element kind="staticText" uuid="280d31b8-7d3a-43a2-a1b2-5980ee815f3a" x="383" y="8" width="169" height="32" bold="true">
+			<text><![CDATA[COMPROBANTE DE PAGO DE  CUOTA SOCIETARIA ]]></text>
+		</element>
+		<element kind="staticText" uuid="d0261fe6-0c36-4817-84b5-76ac3840e7a4" x="383" y="39" width="169" height="20">
+			<text><![CDATA[-------------------------------------------------]]></text>
+		</element>
+		<element kind="line" uuid="5747cfa4-6daf-4382-a4b7-ccc2cfc83e19" x="-1" y="83" width="560" height="1"/>
+		<element kind="staticText" uuid="ea1065c8-4508-440f-bf1a-ffedf015de2d" x="-1" y="99" width="56" height="15">
+			<text><![CDATA[Socio Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="cf2c3a3d-36b6-468a-a44b-3c3382162c21" x="56" y="99" width="142" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroSocio}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="366cd434-ccea-4992-9aae-e55423d5f2a0" x="199" y="99" width="10" height="15">
+			<text><![CDATA[,]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="918a1894-cf9c-4d2c-9022-e4b4da63d13e" x="211" y="99" width="269" height="15">
+			<expression><![CDATA[$P{PnombreSocio}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="e7dcfed3-0f9b-4d12-b0b5-d7c81361287e" x="-1" y="118" width="56" height="15">
+			<text><![CDATA[De periodo ]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="03dbe6cd-07a8-4eb9-afbe-09f5eeb4a850" x="57" y="118" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoDesde}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="564c2ec1-af11-4b60-9af8-e1fc141ba982" x="131" y="118" width="48" height="16">
+			<text><![CDATA[ a periodo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="106ef2cd-1530-4dba-a103-a051ae4dbe09" x="180" y="119" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoHasta}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="63528672-2352-4e55-ba58-044fb695298c" x="359" y="119" width="90" height="16">
+			<text><![CDATA[ - Deuda Socio: ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="d7855798-96d6-4706-95a7-4ef4f1a1845f" x="451" y="118" width="90" height="16" hTextAlign="Right">
+			<expression><![CDATA[$P{PdeudaSocio}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="b811aa29-e33f-4b53-a3bd-f6f37ebf62e6" x="1" y="145" width="560" height="1"/>
+		<element kind="staticText" uuid="3253a482-3ff8-4ce3-86d0-6427db2a1983" x="1" y="156" width="56" height="15">
+			<text><![CDATA[Socio Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="c68f813c-c3a2-436e-838c-96316fa4ef41" x="58" y="156" width="142" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroSocioGarante1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="b9402528-7f3a-46d5-addb-6ef0f0b41abd" x="201" y="156" width="10" height="15">
+			<text><![CDATA[,]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="e4d58457-b80a-4200-a82a-5cee85f62712" x="213" y="156" width="269" height="15">
+			<expression><![CDATA[$P{PnombreGarante1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="35c58a1e-6390-4e35-aa4d-9ccf98a7fb4f" x="1" y="175" width="56" height="15">
+			<text><![CDATA[De periodo ]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="b796135c-ec76-4d61-bc71-24e996985e04" x="59" y="175" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoDesdeGarante1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="e9ec264f-6406-4bbb-be5f-09a6c81a9440" x="133" y="175" width="48" height="16">
+			<text><![CDATA[ a periodo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="6eea8eaa-be00-42f3-b6ac-e139d3f0a2cf" x="182" y="176" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoHastaGarante1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="69509110-8b19-4dab-8a3d-3045d7334a78" x="361" y="176" width="90" height="16">
+			<text><![CDATA[ - Deuda Socio: ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="bda4909e-e975-4de8-bb5b-ce260468bed0" x="453" y="175" width="90" height="16" hTextAlign="Right">
+			<expression><![CDATA[$P{PdeudaSocioGarante1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="5360afce-820f-4fb3-8a13-b26a807d5212" x="2" y="202" width="560" height="1"/>
+		<element kind="staticText" uuid="8a9bf4dc-a03c-4d2c-ace6-d494d5381597" x="1" y="211" width="56" height="15">
+			<text><![CDATA[Socio Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="e29a733b-9f55-4b03-a504-f724a88881b3" x="58" y="211" width="142" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroSocioGarante2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="7eca5946-63ec-41fa-9b7e-6b930d6c225b" x="201" y="211" width="10" height="15">
+			<text><![CDATA[,]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="0e521853-c3c0-4763-8cd2-1448e7707c38" x="213" y="211" width="269" height="15">
+			<expression><![CDATA[$P{PnombreGarante2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="bfc1937d-072c-44ac-9bf3-4c467f815b5a" x="1" y="230" width="56" height="15">
+			<text><![CDATA[De periodo ]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="ab6f0db4-facc-4e12-8cb7-c6ec84b27ab4" x="59" y="230" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoDesdeGarante2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="8f1e0d36-dfab-420c-842f-f3237869d75f" x="133" y="230" width="48" height="16">
+			<text><![CDATA[ a periodo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="6a2efd5c-3981-453a-b95a-274052af8b73" x="182" y="231" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoHastaGarante2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="5da1bca7-26ae-437e-ae18-234c6f061648" x="361" y="231" width="90" height="16">
+			<text><![CDATA[ - Deuda Socio: ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="d180a663-ce04-4e09-8206-cb7d7eb72a18" x="453" y="230" width="90" height="16" hTextAlign="Right">
+			<expression><![CDATA[$P{PdeudaSocioGarante2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="822b4952-e50c-4c76-b53f-ce5a13a06a18" x="2" y="257" width="560" height="1"/>
+		<element kind="staticText" uuid="f58d373a-51aa-4132-bce0-b53eddf336f3" x="2" y="266" width="56" height="15">
+			<text><![CDATA[Socio Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="5864900a-07ff-4f6f-8807-950770a8d2be" x="59" y="266" width="142" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroSocioGarante3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="cc5d4984-ad78-4163-9368-485fca1571d8" x="202" y="266" width="10" height="15">
+			<text><![CDATA[,]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="318be625-0a96-4274-a5eb-33cd7ca85af6" x="214" y="266" width="269" height="15">
+			<expression><![CDATA[$P{PnombreGarante3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="8309774b-9bee-46e4-aaad-cbfa16da00c6" x="2" y="285" width="56" height="15">
+			<text><![CDATA[De periodo ]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="dddea322-7451-4246-8c27-bb8944162a6f" x="60" y="285" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoDesdeGarante3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="d8d11c34-8556-4575-849b-89fa13cd30eb" x="134" y="285" width="48" height="16">
+			<text><![CDATA[ a periodo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="b47eb610-dbb6-458d-a7fb-36faaa89236a" x="183" y="286" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoHastaGarante3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="8826ba1d-6233-4543-b8c1-c075f1cb15a4" x="362" y="286" width="90" height="16">
+			<text><![CDATA[ - Deuda Socio: ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="37d4c6d4-418b-4fcd-926a-4fea6d3d1ca8" x="454" y="285" width="90" height="16" hTextAlign="Right">
+			<expression><![CDATA[$P{PdeudaSocioGarante3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="62d6b58c-f53f-4269-9275-c80dddd658e0" x="2" y="312" width="560" height="1"/>
+		<element kind="rectangle" uuid="b101febb-1978-4fdb-8ccb-094ef6df2e4a" x="0" y="320" width="561" height="31"/>
+		<element kind="staticText" uuid="89e36273-1a6c-4fde-b112-571d755fc593" x="10" y="327" width="110" height="15">
+			<text><![CDATA[TOTAL A COBRAR:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="9e78075d-0acb-4570-bbbf-7d2e78322fd0" x="130" y="327" width="184" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PtotalACobrar}]]></expression>
+		</element>
+		<element kind="staticText" uuid="d219877d-5b56-4ebf-ba00-60027a05bd33" x="2" y="363" width="60" height="15" bold="true">
+			<text><![CDATA[CAJA]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="line" uuid="744034eb-a4b8-44ee-933c-e844f60053a0" x="-10" y="390" width="571" height="1"/>
+		<element kind="staticText" uuid="8bed6620-6dc8-4998-83b8-8ba36dba2bf1" stretchType="NoStretch" x="2" y="410" width="206" height="40" bold="true">
+			<text><![CDATA[CAJA MUTUAL DE ASISTENCIA ECONOMICA Y PRESTACIONES SOCIALES DEL UNION FOOTBALL CLUB  ]]></text>
+		</element>
+		<element kind="staticText" uuid="3da3327b-2c03-4215-aa4b-527815db06c7" x="0" y="454" width="182" height="30" bold="true">
+			<text><![CDATA[          Carlos Pellegrini 1124                                       Tel. 60588 - (2144) TOTORAS - Sta. Fe]]></text>
+		</element>
+		<element kind="staticText" uuid="7386456f-a448-4083-9883-95271cb2819d" x="381" y="413" width="169" height="32" bold="true">
+			<text><![CDATA[COMPROBANTE DE PAGO DE  CUOTA SOCIETARIA ]]></text>
+		</element>
+		<element kind="staticText" uuid="a505d1a7-bbf2-4d9e-852e-5ac97934743a" x="381" y="444" width="169" height="20">
+			<text><![CDATA[-------------------------------------------------]]></text>
+		</element>
+		<element kind="line" uuid="3c4648c2-74be-4b9b-a128-df546a80e0ec" x="-3" y="488" width="560" height="1"/>
+		<element kind="staticText" uuid="b97a11cc-477a-4e39-8882-28b478a3101b" x="-3" y="504" width="56" height="15">
+			<text><![CDATA[Socio Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="c7abe7fa-b7e1-47a5-aa0a-8006548adbae" x="54" y="504" width="142" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroSocio}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="f7e47605-cc46-4915-a12c-8115d7f392c1" x="197" y="504" width="10" height="15">
+			<text><![CDATA[,]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="10cfde1b-8ee4-4edb-8a82-fbbc9dbb6c7d" x="209" y="504" width="269" height="15">
+			<expression><![CDATA[$P{PnombreSocio}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="da344df1-1099-467c-a4a5-944ca2ed9d01" x="-3" y="523" width="56" height="15">
+			<text><![CDATA[De periodo ]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="679fce96-d259-4e07-ba75-5d2adbd49536" x="55" y="523" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoDesde}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="360f99aa-8fec-412d-8acc-02b68cf49a8e" x="129" y="523" width="48" height="16">
+			<text><![CDATA[ a periodo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="742d1ae9-75c8-4d1d-9e80-1dc1b349b3a8" x="178" y="524" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoHasta}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="cf2554f6-9275-4f43-9633-d69b0e5c7e60" x="362" y="524" width="90" height="16">
+			<text><![CDATA[ - Deuda Socio: ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="da7b6a2b-aad8-4ef4-a8db-1e53130b7cca" x="454" y="523" width="90" height="16" hTextAlign="Right">
+			<expression><![CDATA[$P{PdeudaSocio}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="37b9ca3e-2e0b-4f29-9015-3fe591361d4b" x="-1" y="550" width="560" height="1"/>
+		<element kind="staticText" uuid="56ec123c-b995-4dd2-bb42-ca0202794f66" x="-1" y="561" width="56" height="15">
+			<text><![CDATA[Socio Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="01cb94d5-75d8-45ad-a4f2-55188c6dc6d0" x="-1" y="580" width="56" height="15">
+			<text><![CDATA[De periodo ]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="47ef44e4-098a-4ada-8ad0-7f2829f1058c" x="56" y="561" width="142" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroSocioGarante1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="898db08b-e20b-4998-bc1d-1f36f11234f8" x="57" y="580" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoDesdeGarante1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="0d6ac4d7-d617-421b-9cce-220b7fd83583" x="131" y="580" width="48" height="16">
+			<text><![CDATA[ a periodo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="46e72ce5-5185-4487-ad64-15e7d5affbb8" x="199" y="561" width="10" height="15">
+			<text><![CDATA[,]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="483ef936-cf31-4017-8387-e83d870e8e54" x="211" y="561" width="269" height="15">
+			<expression><![CDATA[$P{PnombreGarante1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="bb8895ff-435a-4b1e-bbe1-74fd28fb859f" x="180" y="581" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoHastaGarante1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="5c3c6005-2897-415c-a47d-1d0a06d2ac58" x="364" y="581" width="90" height="16">
+			<text><![CDATA[ - Deuda Socio: ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="ad2ef3fa-7240-4682-9061-42649c500809" x="456" y="580" width="90" height="16" hTextAlign="Right">
+			<expression><![CDATA[$P{PdeudaSocioGarante1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="66b1e8ed-802e-4781-a661-afa583591896" x="0" y="607" width="560" height="1"/>
+		<element kind="staticText" uuid="3273b96d-242b-4d4b-87d4-2d348fe015ab" x="-1" y="616" width="56" height="15">
+			<text><![CDATA[Socio Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="3cbe30e9-92e9-4728-8592-61c5947e10d3" x="-1" y="635" width="56" height="15">
+			<text><![CDATA[De periodo ]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="67873809-cf04-465f-8e74-f84eb9ee41d0" x="56" y="616" width="142" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroSocioGarante2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="b9d25ac0-2aa0-40e4-b18f-aab82baed649" x="57" y="635" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoDesdeGarante2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="cb595770-de10-498b-8a5a-9261bbf6aeeb" x="131" y="635" width="48" height="16">
+			<text><![CDATA[ a periodo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="9e5c1a7f-d437-437d-a772-45a79cdced79" x="199" y="616" width="10" height="15">
+			<text><![CDATA[,]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="60dc7e0d-6148-4a95-a819-42360196f813" x="211" y="616" width="269" height="15">
+			<expression><![CDATA[$P{PnombreGarante2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="0b5999e9-ce9e-4973-b1a2-31b3325946a6" x="180" y="636" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoHastaGarante2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="784abb49-c9e4-43ff-9e22-f977b3a0d65b" x="364" y="636" width="90" height="16">
+			<text><![CDATA[ - Deuda Socio: ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="17d439e9-c805-4513-811d-ab18df0a9e89" x="456" y="635" width="90" height="16" hTextAlign="Right">
+			<expression><![CDATA[$P{PdeudaSocioGarante2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="fe47a9bc-f0c5-4c28-9116-d22f1d88782d" x="0" y="662" width="560" height="1"/>
+		<element kind="staticText" uuid="21682139-db15-422c-93df-54520114fa2b" x="0" y="671" width="56" height="15">
+			<text><![CDATA[Socio Nro.]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="a7e339ec-5711-47e8-98c7-ffb4ed95dace" x="0" y="690" width="56" height="15">
+			<text><![CDATA[De periodo ]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="26bf5094-9e14-40cb-8f6a-019166feae7d" x="58" y="690" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoDesdeGarante3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="textField" uuid="a146e0c1-b2b7-41fe-b5b9-3f3480b9b39c" x="57" y="671" width="142" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PnroSocioGarante3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="0dba55a9-123e-4c7d-a073-1bbdbabb6e59" x="200" y="671" width="10" height="15">
+			<text><![CDATA[,]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="d83a65ac-e9d1-4a0b-9c4c-94ca3661a3cc" x="132" y="690" width="48" height="16">
+			<text><![CDATA[ a periodo]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="dd45cda0-385b-4575-bad1-0199c4ef2609" x="212" y="671" width="269" height="15">
+			<expression><![CDATA[$P{PnombreGarante3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="013c08c8-2da1-47a5-b48f-2ab0b5f162df" x="181" y="691" width="70" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PperiodoHastaGarante3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="369f6fc0-a38f-4594-9611-9cca56423e96" x="365" y="691" width="90" height="16">
+			<text><![CDATA[ - Deuda Socio: ]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="61cadfb9-4793-4e88-810e-050ec6a77559" x="457" y="690" width="90" height="16" hTextAlign="Right">
+			<expression><![CDATA[$P{PdeudaSocioGarante3}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="c50f8b2b-af64-47d6-bf12-87880e74e62f" x="0" y="717" width="560" height="1"/>
+		<element kind="rectangle" uuid="b3d54582-c43f-43ce-872c-ab95e8ad96f1" x="-2" y="725" width="561" height="31"/>
+		<element kind="staticText" uuid="b913e379-fd51-4b00-bc58-522c97db8499" x="8" y="732" width="110" height="15">
+			<text><![CDATA[TOTAL A COBRAR:]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="4a741b97-9cae-468e-9d8e-c7b0b775e846" x="128" y="732" width="184" height="15" hTextAlign="Right">
+			<expression><![CDATA[$P{PtotalACobrar}]]></expression>
+		</element>
+		<element kind="staticText" uuid="826b4def-7249-47c5-827e-59289e3d6920" x="0" y="768" width="60" height="15" bold="true">
+			<text><![CDATA[SOCIO]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+	</title>
+</jasperReport>

@@ -1,0 +1,170 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="DDJJ_PEP" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91707750-4cd8-4cdd-a065-eb49e8529736">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="BBDD_SistemaMutual_PRD"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="PnroSocioG3" forPrompting="false" class="java.lang.Integer"/>
+	<parameter name="PnroSocioG2" forPrompting="false" class="java.lang.Integer"/>
+	<parameter name="PnroSocioG1" forPrompting="false" class="java.lang.Integer"/>
+	<parameter name="PnroSocio" forPrompting="false" class="java.lang.Integer"/>
+	<query language="sql"><![CDATA[SELECT APELLIDO_NOMBRE, 
+CASE WHEN LEFT(PEP, 1) = 'S' THEN 'SI' ELSE 'NO' END AS PEP_ESTADO,
+CASE WHEN LEFT(PEP, 1) = 'S' THEN SUBSTRING(PEP, 6) ELSE '-' END AS MOTIVO_PEP,
+TIPO_DOCUMENTO, 
+CASE WHEN  TIPPER = 'J'  THEN CUIT ELSE NULL END AS CUIT_SOCIO,
+CASE WHEN  TIPPER <> 'J' THEN NRO_DOCUMENTO ELSE NULL END AS DNI_SOCIO,
+DATE_FORMAT(CURDATE(), '%d/%m/%Y') AS FECHA_ACTUAL
+FROM 
+SOCIO
+WHERE 
+NUMERO_SOCIO IN ($P{PnroSocio}, $P{PnroSocioG1}, $P{PnroSocioG2}, $P{PnroSocioG3})]]></query>
+	<field name="APELLIDO_NOMBRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="APELLIDO_NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="APELLIDO_NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="PEP_ESTADO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PEP_ESTADO"/>
+		<property name="com.jaspersoft.studio.field.label" value="PEP_ESTADO"/>
+	</field>
+	<field name="MOTIVO_PEP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MOTIVO_PEP"/>
+		<property name="com.jaspersoft.studio.field.label" value="MOTIVO_PEP"/>
+	</field>
+	<field name="TIPO_DOCUMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TIPO_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="TIPO_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="socio"/>
+	</field>
+	<field name="CUIT_SOCIO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CUIT_SOCIO"/>
+		<property name="com.jaspersoft.studio.field.label" value="CUIT_SOCIO"/>
+	</field>
+	<field name="DNI_SOCIO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="DNI_SOCIO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DNI_SOCIO"/>
+	</field>
+	<field name="FECHA_ACTUAL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="FECHA_ACTUAL"/>
+		<property name="com.jaspersoft.studio.field.label" value="FECHA_ACTUAL"/>
+	</field>
+	<detail>
+		<band height="697">
+			<element kind="staticText" uuid="5185b0bc-daaa-4390-b9cd-d82c0f7c3d9e" x="0" y="10" width="560" height="30" bold="true" hTextAlign="Center">
+				<text><![CDATA[DECLARACIÓN JURADA SOBRE LA CONDICIÓN DE 
+PERSONA EXPUESTA POLÍTICAMENTE]]></text>
+			</element>
+			<element kind="staticText" uuid="4af76189-fb85-4e7c-ba6a-81066cbdc6e9" x="0" y="60" width="560" height="110">
+				<text><![CDATA[Él/la que suscribe,                                                                                 declara bajo juramento que los datos consignados en la presente son correctos, completos y fiel expresión de la verdad y que            se encuentra incluido y/o alcanzado dentro de la “Nómina de Funciones de Personas Expuestas Políticamente” aprobada por la Unidad de Información Financiera, que ha leído.
+En caso afirmativo indicar detalladamente el motivo:_____________________________________________________. 
+
+Además, asume el compromiso de informar cualquier modificación que se produzca a este respecto, dentro de los treinta (30) días de ocurrida, mediante la presentación de una nueva declaración jurada.]]></text>
+			</element>
+			<element kind="textField" uuid="0f3f6cc8-7914-4f54-a7db-7dbd11bd07c7" x="85" y="53" width="220" height="15" bold="true" hTextAlign="Center">
+				<expression><![CDATA[$F{APELLIDO_NOMBRE}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="line" uuid="b1739532-933d-4109-bb6b-3c26000205bd" x="84" y="70" width="220" height="1">
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="58c6aab6-ca6a-42b9-bbfd-003e08ae9dd5" x="312" y="73" width="23" height="15" bold="true" hTextAlign="Center">
+				<expression><![CDATA[$F{PEP_ESTADO}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="9ce1fc0a-6037-42f6-b7ff-f1e0e6b3d6b6" x="236" y="105" width="284" height="15" bold="true" hTextAlign="Left">
+				<expression><![CDATA[$F{MOTIVO_PEP}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="3fe2e1be-3c0d-467b-b00f-3f3dd8b59978" x="0" y="180" width="84" height="20">
+				<text><![CDATA[Documento tipo: ]]></text>
+			</element>
+			<element kind="line" uuid="a9bb338a-5872-4f97-9c20-6b18bba249c5" x="89" y="197" width="80" height="1"/>
+			<element kind="textField" uuid="2b123aeb-5a4b-48ec-9484-c1a060288e3d" x="89" y="180" width="80" height="15" bold="true" hTextAlign="Center">
+				<expression><![CDATA[$F{TIPO_DOCUMENTO}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="962ffa2f-c313-4175-bc2f-d14f75dfe877" x="180" y="180" width="20" height="20">
+				<text><![CDATA[N°:]]></text>
+			</element>
+			<element kind="line" uuid="ed3af4f1-4293-4a0d-9d5d-f3ce7bc42b31" x="206" y="197" width="150" height="1">
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="05f1718d-f68e-4df8-a3a2-c3fe9758988a" x="208" y="180" width="144" height="15" bold="true" hTextAlign="Center">
+				<expression><![CDATA[$F{DNI_SOCIO} != null ? $F{DNI_SOCIO} : " "]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="27572b0e-5a42-49f1-93e7-cb95b19516e5" x="0" y="204" width="360" height="15">
+				<text><![CDATA[País y autoridad de emisión: ARGENTINA]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="80324f3f-5b3b-44c8-a530-ec8ad9a89906" x="0" y="222" width="360" height="15">
+				<text><![CDATA[Carácter invocado: TITULAR]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="3c6ec66d-961d-423f-b0ee-02aecc417385" x="1" y="241" width="168" height="15">
+				<text><![CDATA[Denominación de la persona jurídica:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="line" uuid="35aa08e5-23e2-4d73-913b-bcdfa1e69ea8" x="173" y="257" width="220" height="1">
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="7ac118e4-c017-497c-b276-ae9cf737eae2" x="180" y="240" width="200" height="15" bold="true" hTextAlign="Center">
+				<expression><![CDATA[$F{APELLIDO_NOMBRE}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="aaa4d165-f4dc-4e07-a925-fbe6c3bebc51" x="1" y="261" width="90" height="15">
+				<text><![CDATA[CUIT/CUIL/CAI Nº :]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="line" uuid="080eeaf1-64f4-4077-af41-0162e115e765" x="96" y="278" width="144" height="1">
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="86c93277-34d0-4628-a322-50f90de38db5" x="97" y="261" width="144" height="15" bold="true" hTextAlign="Center">
+				<expression><![CDATA[$F{CUIT_SOCIO} != null ? $F{CUIT_SOCIO} : " "]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="cac826b7-ce61-4940-acdd-4ad507ab8bc7" x="1" y="284" width="128" height="15">
+				<text><![CDATA[Lugar y Fecha: TOTORAS,]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="line" uuid="355e4355-e6db-4fd9-88e7-aa0bdc502653" x="126" y="300" width="110" height="1">
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="4b880cd9-0683-4328-89fe-17ce87812566" x="129" y="284" width="104" height="15" bold="true" hTextAlign="Center">
+				<expression><![CDATA[$F{FECHA_ACTUAL}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="4baf87da-2f5c-4217-bcf6-68a80e8db06a" x="247" y="284" width="42" height="15">
+				<text><![CDATA[Firma:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="line" uuid="ef15da1b-952b-4a38-af3b-efb13e0929c4" x="281" y="300" width="220" height="1">
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a8595109-bec7-4621-83f5-bb0b48a8e657" x="0" y="320" width="550" height="20">
+				<text><![CDATA[Certifico que la firma que antecede concuerda con la registrada en nuestros libros y que fue puesta en mi presencia.]]></text>
+			</element>
+			<element kind="line" uuid="41cfdca5-06cf-46a6-b9b5-c0fd7028ddd1" x="286" y="405" width="220" height="1">
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c86be520-7d08-4a07-8975-bff3ee94b79b" x="307" y="410" width="180" height="20" hTextAlign="Center">
+				<text><![CDATA[ Firma del funcionario del sujeto obligado autorizado]]></text>
+			</element>
+			<element kind="staticText" uuid="7ca54ee6-338e-4dbf-967a-7d91f135fa24" x="307" y="433" width="180" height="20" hTextAlign="Center">
+				<text><![CDATA[JUAN ANTONIO R. SAVIO]]></text>
+			</element>
+			<element kind="staticText" uuid="e91619f9-2dae-442b-9d7b-433473fb97ae" x="307" y="458" width="180" height="20" hTextAlign="Center">
+				<text><![CDATA[ PRESIDENTE]]></text>
+			</element>
+			<element kind="staticText" uuid="9c4acdf6-20a0-4e7c-a630-08a9d7abc53d" x="2" y="505" width="78" height="20" hTextAlign="Left">
+				<text><![CDATA[Observaciones:]]></text>
+			</element>
+			<element kind="line" uuid="4086fb26-495d-4e8c-a0ab-c919ad9128c3" x="83" y="519" width="470" height="1">
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+		</band>
+	</detail>
+</jasperReport>
