@@ -37,7 +37,7 @@ public class AltaCobrosPesosCobrarVariasOUna extends JPanel {
 	private JFrame mainFrame;
 	private JButton btnCobrarUnaCuota;
 	public AltaCobrosPesosCobrarVariasOUna() {
-		iniciar(null,null,null);
+		//iniciar(null,null,null);
     }
     
     public void iniciar(CardLayout cardLayout, JPanel cardPanel,JFrame mainFrame) {

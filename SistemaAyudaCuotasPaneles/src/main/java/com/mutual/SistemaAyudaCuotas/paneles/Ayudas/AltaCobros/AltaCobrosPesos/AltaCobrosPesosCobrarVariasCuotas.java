@@ -166,6 +166,8 @@ public class AltaCobrosPesosCobrarVariasCuotas extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
             	limpiarDatos();
+            	btnImprimirRecibo.setEnabled(false);
+    	        btnCobrar.setEnabled(true);
               	cardLayout.show(cardPanel, panelAnterior);
             }
         });
@@ -1050,6 +1052,8 @@ public class AltaCobrosPesosCobrarVariasCuotas extends JPanel {
 	        }
 	        
 	        btnImprimirRecibo.setEnabled(true);
+	        btnImprimirRecibo.setFocusable(true);
+	        btnImprimirRecibo.requestFocusInWindow();
 	        btnCobrar.setEnabled(false);
 	        BigDecimal montoCuotasSociales = cobrarCuotasSociales();
 	  

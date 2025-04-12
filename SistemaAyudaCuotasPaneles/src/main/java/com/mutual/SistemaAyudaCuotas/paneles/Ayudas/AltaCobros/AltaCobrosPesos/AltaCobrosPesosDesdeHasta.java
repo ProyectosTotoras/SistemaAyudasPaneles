@@ -34,7 +34,7 @@ import com.mutual.SistemaAyudaCuotas.servicio.ICuotaAyudaPesosServicio;
 @Component
 public class AltaCobrosPesosDesdeHasta extends JPanel {
 	
-	private String panelAnterior = "AltaCobrosCobrarVariasOUna";
+	private String panelAnterior = "AltaCobrosPesosCobrarVariasOUna";
 	private JButton btnBusquedaSocios;
   
     //SERVICIOS

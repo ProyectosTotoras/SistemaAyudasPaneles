@@ -48,6 +48,7 @@ import com.mutual.SistemaAyudaCuotas.paneles.Ayudas.ConsultaBajaCobros.ConsultaB
 import com.mutual.SistemaAyudaCuotas.paneles.Ayudas.ConsultaBajaCobros.ConsultaBajaCobrosPesos.ConsultaBajaCobrosPorAyuda;
 import com.mutual.SistemaAyudaCuotas.paneles.Ayudas.ConsultaBajaCobros.ConsultaBajaCobrosPesos.ConsultaBajaCobrosPorSocio;
 import com.mutual.SistemaAyudaCuotas.paneles.Ayudas.ConsultaBajaCobros.ConsultaBajaCobrosPesos.ConsultaBajaCobrosTipoBusqueda;
+import com.mutual.SistemaAyudaCuotas.paneles.ListadosVarios.ListadosVarios;
 import com.mutual.SistemaAyudaCuotas.servicio.ISocioServicio;
 import com.mutual.SistemaAyudaCuotas.servicio.SocioServicio;
 
@@ -65,6 +66,10 @@ public class SistemaAyudaCuotasCardLayout extends JFrame {
 	private CardLayout cardLayout;
     private JPanel cardPanel;
     
+    //LISTADOS VARIOS
+    private final ObjectFactory<ListadosVarios> listadosVariosFactory;
+    private final ListadosVarios listadosVarios;
+   
     //ALTAS
     private final ObjectFactory<AltaAyudaTipoAyuda> altaAyudaTipoAyudaFactory;
     private final AltaAyudaTipoAyuda altaAyudaTipoAyuda;
@@ -188,6 +193,9 @@ public class SistemaAyudaCuotasCardLayout extends JFrame {
     
     public SistemaAyudaCuotasCardLayout(
 
+    		ObjectFactory<ListadosVarios> listadosVariosFactory,
+    		 ListadosVarios listadosVarios,
+    		
         	//-------------------------- ALTA AYUDAS
         	
     		ObjectFactory<AltaAyudaTipoAyuda> altaAyudaTipoAyudaFactory,
@@ -317,6 +325,9 @@ public class SistemaAyudaCuotasCardLayout extends JFrame {
     	    
     		){
 
+    	this.listadosVariosFactory = listadosVariosFactory;
+    	this.listadosVarios = listadosVariosFactory.getObject();
+    	
     	//--------------------------
     	
     	this.altaAyudaTipoAyudaFactory = altaAyudaTipoAyudaFactory;
@@ -471,6 +482,12 @@ public class SistemaAyudaCuotasCardLayout extends JFrame {
          cardPanel.add(menuAyudas, "MenuAyudas");
          
          //-----------ALTAAYUDAS-------------
+         
+         listadosVarios.iniciar(cardLayout, cardPanel, this);        
+         FlowLayout listadosVariosLayout = (FlowLayout) listadosVarios.getLayout();
+         listadosVariosLayout.setVgap(100);
+         cardPanel.add(listadosVarios, "ListadosVarios");
+         
          
          altaAyudaTipoAyuda.iniciar(cardLayout, cardPanel, this);
          altaAyudaTipoAyuda.setMenuAyudas(menuAyudas);

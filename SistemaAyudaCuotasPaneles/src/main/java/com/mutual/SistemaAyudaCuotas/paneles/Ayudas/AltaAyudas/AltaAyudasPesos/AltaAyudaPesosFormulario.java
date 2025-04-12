@@ -968,6 +968,7 @@ public class AltaAyudaPesosFormulario extends JPanel {
 //                	lblErrorCantindadCuotas.setVisible(false); 
                  	int cantidadCuotasv = Integer.parseInt(txtCantidadCuotas.getText());
                  	cantidadCuotas = cantidadCuotasv;
+                 	
                 	//CALCULO FECHAS
                  	calcularCuotas();
                 	
@@ -987,6 +988,16 @@ public class AltaAyudaPesosFormulario extends JPanel {
 	            }
 	        }
 	    });
+		
+		txtCantidadCuotas.addKeyListener(new KeyAdapter() {
+	        @Override
+	        public void keyPressed(KeyEvent e) {
+	            if (e.getKeyCode() == KeyEvent.VK_TAB) {
+	            		txtMesesGracia.requestFocusInWindow(); 	     
+	            }
+	        }
+	    });
+		
 		
 		txtMesesGracia.addFocusListener(new FocusAdapter() {
 			@Override
@@ -1021,7 +1032,8 @@ public class AltaAyudaPesosFormulario extends JPanel {
 		});
 		
 		txtFechaSellado.setText(calculosFechas.calcularFechaSellado(fechaHoy));
-		
+
+
 		cbxNovacion.addKeyListener(new KeyAdapter(){
 			@Override
 			public void keyPressed(KeyEvent e ) {
@@ -1362,7 +1374,22 @@ public class AltaAyudaPesosFormulario extends JPanel {
 
 			}
 		});
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new java.awt.Component[]{txtFechaOp, cbxOpExenta, txtMontoSolicitado, txtTasaMensual, txtGastosAdmin, txtAnios, txtDestinoAyuda, txtCantidadCuotas, txtMesesGracia, cbxNovacion, txtEfectivo, txtTransferecia, txtNroMov, txtDetalleMov, txtImporteMov, txtNroMov2, txtDetalleMov2, txtImporteMov2, txtNroMov3, txtDetalleMov3, txtImporteMov3, btnContinuar, btnGenerarReporte, contentPane, lblGarantia, txtGarantia, lblSocio, txtNumSocio, txtNumGarante1, txtApeNomSocio, txtApeNomGarante1, txtApeNomGarante2, txtNumGarante2, lblGarante1, lblGarante2, txtNumGarante3, lblGarante3, txtApeNomGarante3, lblFechaOp, primerPanel, lblAnios, lblDestinoAyuda, lblCantidadCuotas, lblGastosAdmin, lblTasaMensual, lblMontoSolicitado, lblErrorMontoSolicitado, lblErrorTasaMensual, lblErrorGastosAdministrativos, lblErrorAnios, lblErrorDestinoAyuda, lblErrorCantindadCuotas, segundoPanel, lblNovacion, lblNeto, lblTasaMensual_1, lblMontoSolicitado_1, txtMontoSellado, txtNeto, lblErrorMesesGracia, tercerPanel, lblGastosAdmts_1_1, lblTasaMensual_1_1, lblMontoSolicitado_1_1, lblErrorEfectivo, lblErrorTransferencia, lblNumeroMov, lblGastosAdmts_1_1_2, lblGastosAdmts_1_1_3, lblOpExenta, lblSaldoAhorroCompn, txtSaldoAhorroComun, lblErrorFechaOp, lblIntcuo, txtIntCuo, lblTotint, txtTotInt, lblMontoCuota, txtMontoCuota, lblFechaPrimerCuota, txtFechaCuota, lblFechaSellado, txtFechaSellado, btnCrearOtraAyuda}));
+		
+		setFocusTraversalPolicy(new FocusTraversalOnArray((java.awt.Component[]) new java.awt.Component[]{
+		 txtFechaOp, cbxOpExenta, txtMontoSolicitado, txtTasaMensual,
+		    txtGastosAdmin, txtAnios, txtDestinoAyuda, txtCantidadCuotas,
+		    txtMesesGracia, cbxNovacion, txtEfectivo, txtTransferecia,
+		    txtNroMov, txtDetalleMov, txtImporteMov, txtNroMov2, txtDetalleMov2,
+		    txtImporteMov2, txtNroMov3, txtDetalleMov3, txtImporteMov3, btnContinuar,
+		    btnGenerarReporte, btnCrearOtraAyuda,
+		    lblGarantia, txtGarantia, lblSocio, txtNumSocio, txtNumGarante1,
+		    txtApeNomSocio, txtApeNomGarante1, txtApeNomGarante2, txtNumGarante2,
+		    lblGarante1, lblGarante2, txtNumGarante3, lblGarante3, txtApeNomGarante3,
+		    lblFechaOp, primerPanel, lblAnios, lblDestinoAyuda, lblCantidadCuotas,
+		    lblGastosAdmin, lblTasaMensual, lblMontoSolicitado,
+		    // … include all the components you need in the correct order
+		}));
+//		setFocusTraversalPolicy(new FocusTraversalOnArray(new java.awt.Component[]{txtFechaOp, cbxOpExenta, txtMontoSolicitado, txtTasaMensual, txtGastosAdmin, txtAnios, txtDestinoAyuda, txtCantidadCuotas, txtMesesGracia, cbxNovacion, txtEfectivo, txtTransferecia, txtNroMov, txtDetalleMov, txtImporteMov, txtNroMov2, txtDetalleMov2, txtImporteMov2, txtNroMov3, txtDetalleMov3, txtImporteMov3, btnContinuar, btnGenerarReporte, contentPane, lblGarantia, txtGarantia, lblSocio, txtNumSocio, txtNumGarante1, txtApeNomSocio, txtApeNomGarante1, txtApeNomGarante2, txtNumGarante2, lblGarante1, lblGarante2, txtNumGarante3, lblGarante3, txtApeNomGarante3, lblFechaOp, primerPanel, lblAnios, lblDestinoAyuda, lblCantidadCuotas, lblGastosAdmin, lblTasaMensual, lblMontoSolicitado, lblErrorMontoSolicitado, lblErrorTasaMensual, lblErrorGastosAdministrativos, lblErrorAnios, lblErrorDestinoAyuda, lblErrorCantindadCuotas, segundoPanel, lblNovacion, lblNeto, lblTasaMensual_1, lblMontoSolicitado_1, txtMontoSellado, txtNeto, lblErrorMesesGracia, tercerPanel, lblGastosAdmts_1_1, lblTasaMensual_1_1, lblMontoSolicitado_1_1, lblErrorEfectivo, lblErrorTransferencia, lblNumeroMov, lblGastosAdmts_1_1_2, lblGastosAdmts_1_1_3, lblOpExenta, lblSaldoAhorroCompn, txtSaldoAhorroComun, lblErrorFechaOp, lblIntcuo, txtIntCuo, lblTotint, txtTotInt, lblMontoCuota, txtMontoCuota, lblFechaPrimerCuota, txtFechaCuota, lblFechaSellado, txtFechaSellado, btnCrearOtraAyuda}));
      }
 
 	public void setGarantiaDto(GarantiaInfoDTO garantiaInfo) {
@@ -2084,6 +2111,9 @@ public class AltaAyudaPesosFormulario extends JPanel {
 		        		      
 		        		 	    btnContinuar.setEnabled(false);
 		        		 	    btnGenerarReporte.setEnabled(true);
+		        		 	   btnGenerarReporte.setFocusable(true);
+		        		 	    btnGenerarReporte.requestFocusInWindow();
+		        		 	   
 		        		    }else
 		        		    {
 		        		    	mostrarMensaje("no crea ayuda");
@@ -2118,7 +2148,9 @@ public class AltaAyudaPesosFormulario extends JPanel {
 	        		      
 	        		 	    btnContinuar.setEnabled(false);
 	        		 	    btnGenerarReporte.setEnabled(true);
-	        		 	    btnGenerarReporte.requestFocus();
+	        		 	    btnGenerarReporte.setFocusable(true);
+	        		 	    btnGenerarReporte.requestFocusInWindow();
+	        		 	   
 		        		}
 		        		
 		        			/*System.out.println("IdAyudaPesos: " + ayuda.getIdAyudaPesos());

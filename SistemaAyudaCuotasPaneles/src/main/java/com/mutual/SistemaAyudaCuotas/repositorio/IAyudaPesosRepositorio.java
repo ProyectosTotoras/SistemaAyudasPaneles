@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.mutual.SistemaAyudaCuotas.entidades.AyudaPesos;
+import com.mutual.SistemaAyudaCuotas.entidades.SaldoAyudaPorSocioDTO;
 
 
 @Repository
@@ -52,4 +53,14 @@ public interface IAyudaPesosRepositorio extends JpaRepository<AyudaPesos, Long> 
 		@Query("SELECT a FROM AyudaPesos a WHERE a.nroAyuda = :nroAyuda AND (a.fechaLegales IS NULL AND a.fechaOrigLegales IS NULL)")
 		Optional<AyudaPesos> findByNroAyudaWithoutLegalesDates(@Param("nroAyuda") Integer nroAyuda);
 
+		@Query("SELECT new com.mutual.SistemaAyudaCuotas.entidades.SaldoAyudaPorSocioDTO(" +
+			       "s.numeroSocio, s.apellidoNombre, a.nroAyuda, a.fechaAltaAyuda, a.destinoAyuda, " +
+			       "a.interesCuota, a.garantia, c.montoCuota, a.cantidadCuotas) " +
+			       "FROM AyudaPesos a, Socio s, CuotaAyudaPesos c " +
+			       "WHERE a.numeroSocio = s.numeroSocio " +
+			       "  AND a.nroAyuda = c.numeroAyuda " +
+			       "  AND c.numeroCuota = 1 " +
+			       "  AND a.ayudaSaldada <> 'S' " +
+			       "  AND (a.fechaLegales IS NULL OR a.fechaOrigLegales IS NULL) ORDER BY s.numeroSocio")
+			List<SaldoAyudaPorSocioDTO> findSaldoAyuda();
 }

@@ -80,7 +80,9 @@ public class ConsultaBajaCobrosPantallaSocio extends JPanel {
 	private JTable table;
 	private ConsultaBajaCobrosConsultaCobro consultaBajaCobrosConsultaCobro;
 	private JLabel lblAyudasPorNmero;
-	
+	private CardLayout cardLayout; 
+	private JPanel cardPanel;
+	private JFrame mainFrame;
 	public ConsultaBajaCobrosPantallaSocio( 
 			 ICobroCuotaAyudaPesosServicio cobroCuotaAyudaPesosServicio,
 				ICuotaAyudaPesosServicio cuotasServicio, 
@@ -99,7 +101,9 @@ public class ConsultaBajaCobrosPantallaSocio extends JPanel {
     }
     
     public void iniciar(CardLayout cardLayout, JPanel cardPanel,JFrame mainFrame) {
-    	
+    	this.mainFrame = mainFrame;
+    	this.cardPanel = cardPanel;
+    	this.cardLayout = cardLayout;
     	// Configurar key binding para la tecla Escape
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
             .put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "escapeAction");
@@ -615,7 +619,14 @@ public class ConsultaBajaCobrosPantallaSocio extends JPanel {
 			            txtInteresCuota.setText(interesCuotaStr);
 
 			            txtMontoCuota.setText(montoCuota == null ? "0,00" : df.format(montoCuota));
-
+			            
+//			            if(cobros == null || cobros.size() == 0)
+//			            {
+//			            	
+//			             	cardLayout.show(cardPanel, panelAnterior);
+//			                
+//			            }
+			            
 		                tableModel.setCobros(cobros);
 	                } catch (Exception ex) {
 		                ex.printStackTrace();

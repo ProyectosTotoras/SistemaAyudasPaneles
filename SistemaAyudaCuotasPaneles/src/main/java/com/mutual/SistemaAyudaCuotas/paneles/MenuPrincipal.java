@@ -55,6 +55,16 @@ public class MenuPrincipal extends JPanel {
     	btnListados.setHorizontalAlignment(SwingConstants.LEFT);
     	btnListados.setFont(new Font("72", Font.BOLD, 17));
     	btnListados.setBounds(83, 104, 378, 36);
+    	btnListados.addActionListener(e -> cardLayout.show(cardPanel, "ListadosVarios"));
+    	btnListados.addKeyListener(new KeyAdapter() {
+    		@Override
+    		public void keyPressed(KeyEvent e) {
+    			if(e.getKeyChar() == KeyEvent.VK_ENTER) {
+    				 cardLayout.show(cardPanel, "ListadosVarios");
+//    		         ((CardLayoutExample) mainFrame).showPanel("MenuAyudas");
+    			}
+    		}
+    	});
     	mainPanel.add(btnListados);
     	
     	JButton btnMantenimientoGarantias = new JButton("3 - Mantenimiento de Garantías");

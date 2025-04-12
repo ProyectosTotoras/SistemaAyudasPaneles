@@ -152,6 +152,8 @@ public class AltaCobrosPesosCobrarUnaCuota extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
             	limpiarDatos();
+            	 btnImprimirRecibo.setEnabled(false);
+     	        btnCobrar.setEnabled(true);
             	cardLayout.show(cardPanel, panelAnterior);
             }
         });
@@ -786,8 +788,6 @@ public class AltaCobrosPesosCobrarUnaCuota extends JPanel {
 	    } else {
 	        this.ayudaPesos = new AyudaPesos();
 	    } 
-	    
-	
 	}
 	
 	
@@ -801,8 +801,6 @@ public class AltaCobrosPesosCobrarUnaCuota extends JPanel {
 	    } else {
 	        this.listaCuotasAdeudadas = new ArrayList<CuotaAyudaPesos>();
 	    } 
-	    
-	   
 	}
 	
 	//-------------METODOS----------------------
@@ -1314,6 +1312,8 @@ public class AltaCobrosPesosCobrarUnaCuota extends JPanel {
 		    }
 		    
 	        btnImprimirRecibo.setEnabled(true);
+	        btnImprimirRecibo.setFocusable(true);
+	        btnImprimirRecibo.requestFocusInWindow();
 	        btnCobrar.setEnabled(false);
 	        BigDecimal montoCuotasSociales = cobrarCuotasSociales();
 	        
